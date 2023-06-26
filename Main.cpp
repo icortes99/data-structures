@@ -1,100 +1,252 @@
 #include <iostream>
-#include <fstream>
 #include <string>
+#include <stdlib.h>
+#include <fstream>
+#include <sstream>
+#include <cctype>
+#include <iostream>
 #include "Red_Black_tree.h"
-#include "LeerTxt.h"
+#include "HashTable.h"
+#include "Tree_AVL.h"
+#include "Canton.h"
+void menu();
+
+
 using namespace std;
 
-int main(){
-    Red_Black_tree tree;
-    LeerTxt archivoTxt;
-    int choice = 0;
+Tree_AVL* cantones = new Tree_AVL();
 
-    while (choice != 5) {
-        std::cout << "Menu:" << std::endl;
-        std::cout << "1. Agregar nodo" << std::endl;
-        std::cout << "2. Eliminar nodo" << std::endl;
-        std::cout << "3. Buscar nodo" << std::endl;
-        std::cout << "4. Imprimir árbol" << std::endl;
-        std::cout << "5. Salir" << std::endl;
-        std::cout << "6. Imprimir txt" << std::endl;
-        std::cout << "7. Obtener canton por id" << std::endl;
-        std::cout << "Ingrese su elección: ";
-        std::cin >> choice;
+string nombre_canton, nombre_distrito, nombre_alcalde;
+int cantidad_habitantes, modificar_opcion, main_choice, provincia_opcion;
+bool exit_program = false;
 
-        switch (choice) {
+void leerCantones() {
+    std::ifstream inputFile("Cantones.txt");
+
+    std::string id_canton, nombre, distrito, provincia_id, alcalde, habitantes;
+
+    std::string line;
+
+    if (inputFile.is_open()) {
+        while (getline(inputFile, line)) {
+
+            stringstream ss(line);
+
+            getline(ss, id_canton, ',');
+            getline(ss, nombre, ',');
+            getline(ss, provincia_id, ',');
+            getline(ss, distrito, ',');
+            getline(ss, alcalde, ',');
+            getline(ss, habitantes, ',');
+
+            std::cout << id_canton << std::endl;
+            std::cout << nombre << std::endl;
+            cout << "Provincia numbero " << stoi(provincia_id) << endl;
+            Canton* canton = new Canton(stoi(id_canton), nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
+
+            cantones->agregar(canton);
+        }
+        inputFile.close();
+    }
+}
+
+int readIntegerInput(std::string Text) {
+    int input;
+    while (true) {
+        cout << Text;
+        cin >> input;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Dato incorrecto. Por favor ingrese datos numericos unicamente ." << endl;
+        }
+        else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return input;
+        }
+    }
+}
+
+std::string first_letter_uppercase(const std::string& input) {
+    std::string result = input;
+    if (!result.empty()) {
+        result[0] = std::toupper(static_cast<unsigned char>(result[0]));
+    }
+    return result;
+}
+
+std::string readStringInput(std::string prompt) {
+    std::string input;
+    while (true) {
+        cin.ignore();
+
+        std::cout << prompt;
+
+        std::getline(cin, input);
+
+        if (input.empty()) {
+            std::cout << "Este campo es requerido, no debe estar vacio, por favor ingresar la informacion requerida." << std::endl;
+        }
+        else {
+            return first_letter_uppercase(input);
+        }
+    }
+}
+
+void modificarDistrito()
+{
+    nombre_distrito = readStringInput("Ingrese el nombre del distrito que desea modificar ");
+}
+
+void modificarAlcalde()
+{
+    nombre_alcalde = readStringInput("Ingrese el nombre del distrito que desea modificar ");
+}
+
+void modificarHabitantes()
+{
+    cantidad_habitantes = readIntegerInput("Ingrese la cantidad de habitantes que desea agregar ");
+}
+
+void modificarCantonMenu() {
+    while (!0)
+    {
+        cout << "----------------------------------" << endl;
+        cout << "  Opciones de modificacion" << endl;
+        cout << "----------------------------------" << endl;
+        cout << "(1) Modificar distrito " << endl;
+        cout << "(2) Modificar alcalde   " << endl;
+        cout << "(3) Modificar habitantes   " << endl;
+        cout << "(0) Regresar" << endl;
+        modificar_opcion = readIntegerInput("Seleccione una opcion -> ");
+        cout << "===================================" << endl;
+
+
+        switch (modificar_opcion) {
         case 1: {
-            int inKey;
-            string inData;
-            std::cout << "Ingrese la clave del nodo a agregar: ";
-            std::cin >> inKey;
-            std::cout << "Ingrese la información del nodo a agregar: ";
-            std::cin >> inData;
-            NodeRB* newNode = new NodeRB(inKey, inData);
-            tree.add(newNode);
-            std::cout << "Nodo agregado correctamente." << std::endl;
+            modificarDistrito();
             break;
         }
         case 2: {
-            int key;
-            std::cout << "Ingrese la clave del nodo a eliminar: ";
-            std::cin >> key;
-            tree.remove(key);
-            std::cout << "Nodo eliminado correctamente." << std::endl;
+            modificarAlcalde();
             break;
         }
         case 3: {
-            int key;
-            std::cout << "Ingrese la clave del nodo a buscar: ";
-            std::cin >> key;
-            NodeRB* node = tree.find(key, tree.getRoot());
-            if (node != nullptr) {
-                node->printNode();
-            }
-            else {
-                std::cout << "Nodo no encontrado." << std::endl;
-            }
+            modificarHabitantes();
             break;
         }
-        case 4: {
-            tree.printTree();
+        case 0: {
+            cout << "Regresando...." << endl;
+            system("cls");
+            menu();
             break;
         }
-        case 5: {
-            return 0;
-        }
-        case 6: {
-            //string line_; funciona para el primer while
-            ifstream file_("Cantones.txt");
-            int id_canton;
-            string canton;
-            string distrito;
-            int provincia_id;
-            string alcalde;
-            int habitantes;
-            if (file_.is_open()) {
-                /*while (getline(file_, line_)) {
-                    cout << line_ << endl;
-                }*/ //Funciona para leer linea por linea del documento txt
-                while (file_ >> id_canton >> canton >> distrito >> provincia_id >> alcalde >> habitantes){
-                    cout << "Canton: " << id_canton << " " << canton << " " << distrito << " " << provincia_id << " " << alcalde << " " << habitantes << endl;
-                }
-                file_.close();
-            } else {
-                cout << "File is not open";
-            }
-        }
-        case 7: {
-            int idCanton = 0;
-            std::cout << "Id del canton: ";
-            std::cin >> idCanton;
-            archivoTxt.obtener_canton_id(idCanton)->imprimir();
-        }
-        default:
-            std::cout << "Opción inválida. Intente nuevamente." << std::endl;
+        default: {
+            cout << "Opcion no valida..." << endl;
+            cout << "\n\n";
+            system("cls");
             break;
+        }
+
         }
     }
 
-    std::cout << "Good bye\n";
+}
+
+void consultarProvincia() {
+    cout << "----------------------------------" << endl;
+    cout << "  Codigo de Provincia" << endl;
+    cout << "----------------------------------" << endl;
+    cout << "(1) San José " << endl;
+    cout << "(2) Alajuela " << endl;
+    cout << "(3) Cartago" << endl;
+    cout << "(4) Heredia " << endl;
+    cout << "(5) Guanacaste " << endl;
+    cout << "(6) Puntarenas " << endl;
+    cout << "(7) Limon " << endl;
+    cout << "----------------------------------" << endl;
+    provincia_opcion = readIntegerInput("Digite el numero de la provincia a consultar:  ");
+
+
+    switch (provincia_opcion) {
+    case 1: {
+        cantones->display();
+        break;
+    }
+    case 2: {
+        cantones->display();
+        break;
+    }
+    case 0: {
+        cout << "Regresando...." << endl;
+        system("cls");
+        modificarCantonMenu();
+        break;
+    }
+    default: {
+        cout << "Opcion no valida..." << endl;
+        cout << "\n\n";
+        system("cls");
+        break;
+    }
+
+    }
+
+
+
+}
+
+void menu() {
+    while (!exit_program)
+    {
+        cout << "----------------------------------" << endl;
+        cout << "  Bienvenido a Registro Nacional" << endl;
+        cout << "----------------------------------" << endl;
+        cout << "(1) Modificar canton " << endl;
+        cout << "(2) Consultar provincia   " << endl;
+        cout << "(3) Cosultar canton   " << endl;
+        cout << "(4) Mostrar cantones de provincia  " << endl;
+        cout << "(5) Mostrar todos los cantones  " << endl;
+        cout << "(6) Mostrar detalle de cantones por provincia  " << endl;
+        cout << "(7) Mostrar cantones por poblacion  " << endl;
+        cout << "(8) Mostrar provincia y cantones por poblacion   " << endl;
+        cout << "(9) Mostrar provincia y cantones por referencia  " << endl;
+        cout << "(0) Finalizar" << endl;
+
+        main_choice = readIntegerInput("Seleccione una opcion ->  ");
+        cout << "===================================" << endl;
+
+
+        switch (main_choice) {
+        case 1: {
+            modificarCantonMenu();
+            break;
+        }
+        case 2: {
+            consultarProvincia();
+            break;
+        }
+        case 0: {
+            cout << "Finalizando el programa... ";
+            exit_program = true;
+            break;
+        }
+        default: {
+            cout << "Opcion no valida..." << endl;
+            cout << "\n\n";
+            system("pause");
+            system("cls");
+
+        }
+
+        }
+    }
+
+}
+
+
+int main() {
+    leerCantones();
+    menu();
+    return 0;
 }
