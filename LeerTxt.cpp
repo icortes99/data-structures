@@ -1,6 +1,6 @@
 #include "LeerTxt.h"
 
-LeerTxt::LeerTxt(){
+/*LeerTxt::LeerTxt() {
 	ifstream file_("Cantones.txt");
     string line_;
 
@@ -18,6 +18,32 @@ LeerTxt::LeerTxt(){
         file_.close();
     } else {
         cout << "File is not open";
+    }
+}*/
+
+LeerTxt::LeerTxt() {
+    std::ifstream inputFile("Cantones.txt");
+
+    std::string id_canton, nombre, distrito, provincia_id, alcalde, habitantes;
+
+    std::string line;
+
+    if (inputFile.is_open()) {
+        while (getline(inputFile, line)) {
+
+            stringstream ss(line);
+
+            getline(ss, id_canton, ',');
+            getline(ss, nombre, ',');
+            getline(ss, provincia_id, ',');
+            getline(ss, distrito, ',');
+            getline(ss, alcalde, ',');
+            getline(ss, habitantes, ',');
+
+            Canton* canton = new Canton(stoi(id_canton), nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
+
+        }
+        inputFile.close();
     }
 }
 

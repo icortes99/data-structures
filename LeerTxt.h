@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include "Canton.h"
 #include "CantonTxt.h"
 using namespace std;
 

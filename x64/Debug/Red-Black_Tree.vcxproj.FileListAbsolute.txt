@@ -1,2 +1,3 @@
 C:\Users\corte\OneDrive\Escritorio\U\7mo\Estructuras2\Red-Black_Tree\x64\Debug\Red-Black_Tree.exe
 C:\Users\corte\OneDrive\Escritorio\U\7mo\Estructuras2\Proyecto_repo\x64\Debug\Red-Black_Tree.exe
+C:\Users\corte\OneDrive\Escritorio\U\7mo\Estructuras2\Repo_sln\avance1\x64\Debug\Avance1.exe

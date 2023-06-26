@@ -24,6 +24,7 @@
     <ProjectGuid>{19d08a55-f500-496f-ac92-08b4fcb0711e}</ProjectGuid>
     <RootNamespace>RedBlackTree</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Avance1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,17 +128,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Canton.cpp" />
     <ClCompile Include="CantonTxt.cpp" />
+    <ClCompile Include="HashTable.cpp" />
     <ClCompile Include="LeerTxt.cpp" />
     <ClCompile Include="NodeRB.cpp" />
-    <ClCompile Include="Red-Black_Tree.cpp" />
+    <ClCompile Include="NodeTAVL.cpp" />
+    <ClCompile Include="NodoTH.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Red_Black_tree.cpp" />
+    <ClCompile Include="Tree_AVL.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Canton.h" />
     <ClInclude Include="CantonTxt.h" />
+    <ClInclude Include="HashTable.h" />
     <ClInclude Include="LeerTxt.h" />
     <ClInclude Include="NodeRB.h" />
+    <ClInclude Include="NodeTAVL.h" />
+    <ClInclude Include="NodoTH.h" />
     <ClInclude Include="Red_Black_tree.h" />
+    <ClInclude Include="Tree_AVL.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cantones.txt" />

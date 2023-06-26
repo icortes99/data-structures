@@ -33,6 +33,9 @@
     <ClCompile Include="CantonTxt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Canton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NodeRB.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CantonTxt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Canton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

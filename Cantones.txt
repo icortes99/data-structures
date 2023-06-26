@@ -1,35 +1,10 @@
-8 Escazu Escazu 1 ArnoldoBarahona 71202
-9 Desamparados Desamparados 1 HazelTorres 249367
-10 Puriscal Santiago 1 IrisArroyo 38593
-11 Aserri Aserri 1 JoseGarcia 64480
-12 Goicoechea Guadalupe 1 RafaelVargas 140764
-13 Palmares Palmares 2 KatherineRamirez 41805
-14 Poas SanPedro 2 HeibelRodriguez 34926
-15 Orotina Orotina 2 BenjaminRodriguez 24448
-16 Zarcero Zarcero 2 RonaldAraya 14629
-17 Upala Upala 2 AuraLopez 55466
-18 Oreamuno SanRafael 3 ErickJimenez 50595
-19 Guarco Tejar 3 VictorArias 46959
-20 Jimenez JuanVinas 3 LisetteFernandez 16361
-21 Alvarado Pacayas 3 JuanMartinez 15615
-22 Paraiso Paraiso 3 CarlosRamirez 63796
-23 Barva Barva 4 JorgeAcuna 48190
-24 SantoDomingo SantoDomingo 4 RobertoGonzalez 49835
-25 SanIsidro SanIsidro 4 AnaHernandez 23655
-26 Belen SanAntonio 4 ThaisZumbado 26853
-27 Flores SanJoaquin 4 EderRamirez 25401
-28 Liberia Liberia 5 GerardoCastaneda 79610
-30 Nicoya Nicoya 5 CarlosMartinez 57624
-31 Bagaces Bagaces 5 EvaVasquez 24847
-32 Carrillo Filadelfia 5 CarlosCantillo 47756
-33 Abangares LasJuntas 5 HeribertoCubero 20282
-34 Puntarenas Puntarenas 6 WilberMadriz 143875
-35 Esparza Esparza 6 AsdrubalCalvo 39244
-36 Miramar Miramar 6 LuisVillalobos 14587
-37 Quepos Quepos 6 JongKim 34020
-38 Golfito Golfito 6 FreinerLara 46523
-39 Limon Limon 7 NestorMattis 100236
-40 Pococi Guapiles 7 ManuelHernandez 154674
-41 Siquirres Siquirres 7 MangellMclean 65673
-42 Talamanca Bribri 7 RugeliMorales 44802
-43 Matina Matina 7 WalterCespedes 47391
+1,San José,1,San José,Johnny Francisco Araya Monge,351958
+2,Escazú,1,Escazú,Arnoldo Valentín Barahona Cortés,71202
+3,Desamparados,1,Desamparados,Hazel Torres Hernández,249367
+4,Puriscal,1,Santiago,Iris Cristina Arroyo Hererra,38593
+5,Tarrazú,1,San Marcos,Ana Lorena Rovira Gutiérrez,18787
+6,Aserrí,1,Aserrí,José Oldemar García Segura,64480
+7,Mora,1,Colón,Rodrigo Alfonso Jiménez Cascante,30759
+8,Goicoechea,1,Guadalupe,Rafael Ángel Vargas Brenes,140764
+9,Santa Ana,1,Santa Ana,Gerardo Oviedo Espinoza,61853
+10,Alajuelita,1,Alajuelita,Modesto Alpízar Luna,97158
