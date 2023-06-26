@@ -27,12 +27,24 @@
     <ClCompile Include="Red_Black_tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LeerTxt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CantonTxt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NodeRB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Red_Black_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LeerTxt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CantonTxt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

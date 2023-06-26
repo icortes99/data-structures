@@ -127,11 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CantonTxt.cpp" />
+    <ClCompile Include="LeerTxt.cpp" />
     <ClCompile Include="NodeRB.cpp" />
     <ClCompile Include="Red-Black_Tree.cpp" />
     <ClCompile Include="Red_Black_tree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CantonTxt.h" />
+    <ClInclude Include="LeerTxt.h" />
     <ClInclude Include="NodeRB.h" />
     <ClInclude Include="Red_Black_tree.h" />
   </ItemGroup>
