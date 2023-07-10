@@ -392,5 +392,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .vscode
-
-.a.out
+.vs
