@@ -5,6 +5,7 @@
 #include <sstream>
 #include <cctype>
 #include <iostream>
+#include <locale> 
 #include "Red_Black_tree.h"
 #include "Tree_AVL.h"
 #include "BTree.h"
@@ -65,19 +66,21 @@ int readIntegerInput(std::string Text) {
     }
 }
 
-std::string first_letter_uppercase(const std::string& input) {
-    std::string result = input;
-    if (!result.empty()) {
-        result[0] = std::toupper(static_cast<unsigned char>(result[0]));
+
+std::string toUpperCase(const std::string& str) {
+    std::string result;
+    std::locale loc;
+
+    for (char ch : str) {
+        result += std::toupper(ch, loc);
     }
+
     return result;
 }
 
 std::string readStringInput(std::string prompt) {
     std::string input;
     while (true) {
-        cin.ignore();
-
         std::cout << prompt;
 
         std::getline(cin, input);
@@ -86,7 +89,7 @@ std::string readStringInput(std::string prompt) {
             std::cout << "Este campo es requerido, no debe estar vacio, por favor ingresar la informacion requerida." << std::endl;
         }
         else {
-            return first_letter_uppercase(input);
+            return toUpperCase(input);
         }
     }
 }
@@ -190,8 +193,13 @@ void consultarProvincia() {
 
     }
 
+}
 
+void consultarCanton(){
+    
+    nombre_canton = readStringInput("Ingrese el nombre del canton que desea consultar: ");
 
+    cantones->displayCanton(nombre_canton);
 }
 
 void menu() {
@@ -222,6 +230,10 @@ void menu() {
         }
         case 2: {
             consultarProvincia();
+            break;
+        }
+         case 3: {
+            consultarCanton();
             break;
         }
         case 0: {

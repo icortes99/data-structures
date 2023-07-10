@@ -136,3 +136,28 @@ void Tree_AVL::display()
     inorder(root);
     cout << endl;
 }
+
+void Tree_AVL::displayCanton(std::string pnombre)
+{
+    NodeTAVL* aux = searchCanton(root, pnombre);
+    
+    if(aux  != NULL){
+        cout <<"El distrito cabecera es:  " << aux->canton->get_distrito() << endl;
+        cout <<"El alcalde(sa) es:  " << aux->canton->get_alcalde() << endl;
+        cout <<"El total de habitantes es:  " << aux->canton->get_habitantes() << endl;
+    }else {
+        cout <<"No se encontraron datos "<< endl;
+    }              
+}
+
+NodeTAVL* Tree_AVL::searchCanton(NodeTAVL* t, std::string pnombre)
+{
+    if (t->canton->get_nombre() == pnombre)
+        return t;
+    
+    if(pnombre > t->canton->get_nombre())
+        return searchCanton(t->right, pnombre);
+
+    return searchCanton(t->left,pnombre);
+ 
+}

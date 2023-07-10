@@ -12,6 +12,7 @@ public:
 	int height(NodeTAVL*);
 	NodeTAVL*& getRoot();
 	void setRoot(NodeTAVL*);
+	void displayCanton(std::string pnombre);
 
 
 private:
@@ -25,6 +26,7 @@ private:
 	void makeEmpty(NodeTAVL*);
 	int getBalance(NodeTAVL*);
 	void inorder(NodeTAVL*);
+	NodeTAVL* searchCanton(NodeTAVL*,std::string pnombre);
 
 	/*Recursive Operations*/
 	NodeTAVL* singleRightRotate(NodeTAVL*&);

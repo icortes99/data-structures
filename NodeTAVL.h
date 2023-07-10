@@ -8,13 +8,18 @@ public:
     NodeTAVL* right;
     int height;
 
-    std::string get_canton_name(std::string);
-    std::string get_canton_distrito(std::string);
-    std::string get_canton_alcalde(std::string);
-    int get_canton_habitantes(std::string);
+    NodeTAVL();
+    NodeTAVL(Canton*);
+    ~NodeTAVL();
+    NodeTAVL *&getLeft();
+    NodeTAVL *&getRight();
+    int getHeight();
+    Canton* getCanton();
+    void setCanton(Canton*);
 
-    void edit_canton_distrito(std::string,std::string);
-    void edit_canton_alcalde(std::string,std::string);
-    void edit_canton_habitantes(std::string,int);
+
+
+  
+
 
 };

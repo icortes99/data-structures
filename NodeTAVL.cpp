@@ -1,37 +1,43 @@
 #include "NodeTAVL.h"
 
 
-std::string NodeTAVL::get_canton_name(std::string pnombre){
-}
-
-std::string NodeTAVL::get_canton_distrito(std::string pnombre){
-
+NodeTAVL::~NodeTAVL(){
 
 }
 
-std::string NodeTAVL::get_canton_alcalde(std::string pnombre){
+NodeTAVL::NodeTAVL(){
+    this->canton = NULL;
+    this->left = NULL;
+    this->right = NULL;
+    this->height = 0;
+}
 
+NodeTAVL::NodeTAVL(Canton* pcanton){
+    this->canton = pcanton;
+    this->left = NULL;
+    this->right = NULL;
+    this->height = 0;
+}
+
+int NodeTAVL::getHeight(){
+    return this->height;
 
 }
 
-int NodeTAVL::get_canton_habitantes(std::string pnombre){
+NodeTAVL*& NodeTAVL::getLeft(){
+    return this->left;
 
+}
+NodeTAVL*& NodeTAVL::getRight(){
+    return this->right;
 
 }
 
-void NodeTAVL::edit_canton_distrito(std::string pnombre, std::string pdistrito){
-
-
-}
-
-void NodeTAVL::edit_canton_alcalde(std::string pnombre, std::string palcalde){
-
+Canton* NodeTAVL::getCanton(){
+    return this->canton;
 
 }
 
-void NodeTAVL::edit_canton_habitantes(std::string pnombre, int habitantes){
 
-
-}
 
 
