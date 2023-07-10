@@ -20,23 +20,23 @@ NodeTAVL* Tree_AVL::insert(Canton* x, NodeTAVL* t)
         t->height = 0;
         t->left = t->right = NULL;
     }
-    else if (x->get_id_canton() < t->canton->get_id_canton())
+    else if (x->get_nombre() < t->canton->get_nombre())
     {
         t->left = insert(x, t->left);
         if (height(t->left) - height(t->right) == 2)
         {
-            if (x->get_id_canton() < t->canton->get_id_canton())
+            if (x->get_nombre() < t->canton->get_nombre())
                 t = singleRightRotate(t);
             else
                 t = doubleRightRotate(t);
         }
     }
-    else if (x->get_id_canton() > t->canton->get_id_canton())
+    else if (x->get_nombre() > t->canton->get_nombre())
     {
         t->right = insert(x, t->right);
         if (height(t->right) - height(t->left) == 2)
         {
-            if (x->get_id_canton() > t->right->canton->get_id_canton())
+            if (x->get_nombre() > t->right->canton->get_nombre())
                 t = singleLeftRotate(t);
             else
                 t = doubleLeftRotate(t);
@@ -126,7 +126,7 @@ Tree_AVL::Tree_AVL()
     root = NULL;
 }
 
-void Tree_AVL::agregar(Canton* canton)
+void Tree_AVL::add(Canton* canton)
 {
     root = insert(canton, root);
 }

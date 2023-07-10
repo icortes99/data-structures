@@ -6,8 +6,8 @@
 #include <cctype>
 #include <iostream>
 #include "Red_Black_tree.h"
-#include "HashTable.h"
 #include "Tree_AVL.h"
+#include "BTree.h"
 #include "Canton.h"
 void menu();
 
@@ -23,7 +23,7 @@ bool exit_program = false;
 void leerCantones() {
     std::ifstream inputFile("Cantones.txt");
 
-    std::string id_canton, nombre, distrito, provincia_id, alcalde, habitantes;
+    std::string nombre, distrito, provincia_id, alcalde, habitantes;
 
     std::string line;
 
@@ -32,19 +32,17 @@ void leerCantones() {
 
             stringstream ss(line);
 
-            getline(ss, id_canton, ',');
             getline(ss, nombre, ',');
             getline(ss, provincia_id, ',');
             getline(ss, distrito, ',');
             getline(ss, alcalde, ',');
             getline(ss, habitantes, ',');
 
-            std::cout << id_canton << std::endl;
             std::cout << nombre << std::endl;
-            cout << "Provincia numbero " << stoi(provincia_id) << endl;
-            Canton* canton = new Canton(stoi(id_canton), nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
+            cout << "Provincia numero " << stoi(provincia_id) << endl;
+            Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
 
-            cantones->agregar(canton);
+            cantones->add(canton);
         }
         inputFile.close();
     }
@@ -157,7 +155,7 @@ void consultarProvincia() {
     cout << "----------------------------------" << endl;
     cout << "  Codigo de Provincia" << endl;
     cout << "----------------------------------" << endl;
-    cout << "(1) San José " << endl;
+    cout << "(1) San Jose " << endl;
     cout << "(2) Alajuela " << endl;
     cout << "(3) Cartago" << endl;
     cout << "(4) Heredia " << endl;
@@ -200,7 +198,7 @@ void menu() {
     while (!exit_program)
     {
         cout << "----------------------------------" << endl;
-        cout << "  Bienvenido a Registro Nacional" << endl;
+        cout << " Bienvenido a Registro Provincial  " << endl;
         cout << "----------------------------------" << endl;
         cout << "(1) Modificar canton " << endl;
         cout << "(2) Consultar provincia   " << endl;

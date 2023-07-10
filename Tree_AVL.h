@@ -7,7 +7,7 @@ public:
 	~Tree_AVL();
 
 	/*Operations*/
-	void agregar(Canton*);
+	void add(Canton*);
 	void display();
 	int height(NodeTAVL*);
 	NodeTAVL*& getRoot();

@@ -1,16 +1,11 @@
 #include "Canton.h"
 
-Canton::Canton(int pid_canton, std::string pnombre, int pprovincia_id, std::string pdistrito, std::string palcalde, int phabitantes) {
-	this->id_canton = pid_canton;
+Canton::Canton(std::string pnombre, int pprovincia_id, std::string pdistrito, std::string palcalde, int phabitantes) {
 	this->nombre = pnombre;
 	this->distrito = pdistrito;
 	this->provincia_id = pprovincia_id;
 	this->alcalde = palcalde;
 	this->habitantes = phabitantes;
-}
-
-void Canton::set_id_canton(int pid_canton) {
-	this->id_canton = pid_canton;
 }
 
 void Canton::set_nombre(std::string pnombre) {
@@ -31,10 +26,6 @@ void Canton::set_alcalde(std::string palcalde) {
 
 void Canton::set_habitantes(int phabitantes) {
 	this->habitantes = phabitantes;
-}
-
-int Canton::get_id_canton() {
-	return this->id_canton;
 }
 
 string Canton::get_nombre() {
