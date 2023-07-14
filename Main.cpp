@@ -38,9 +38,7 @@ void leerCantones() {
             getline(ss, distrito, ',');
             getline(ss, alcalde, ',');
             getline(ss, habitantes, ',');
-
-            std::cout << nombre << std::endl;
-            cout << "Provincia numero " << stoi(provincia_id) << endl;
+            
             Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
 
             cantones->add(canton);
@@ -96,17 +94,23 @@ std::string readStringInput(std::string prompt) {
 
 void modificarDistrito()
 {
-    nombre_distrito = readStringInput("Ingrese el nombre del distrito que desea modificar ");
+   nombre_canton = readStringInput("Ingrese el nombre del canton");
+   nombre_distrito = readStringInput("Ingrese el nuevo distrito");
+   cantones->editDistrito(nombre_canton,nombre_distrito);
 }
 
 void modificarAlcalde()
 {
-    nombre_alcalde = readStringInput("Ingrese el nombre del distrito que desea modificar ");
+    nombre_canton = readStringInput("Ingrese el nombre del canton");
+    nombre_alcalde = readStringInput("Ingrese el nombre del nuevo alcalde(sa)");
+    cantones->editAlcalde(nombre_canton,nombre_alcalde);
 }
 
 void modificarHabitantes()
 {
+    nombre_canton = readStringInput("Ingrese el nombre del canton");
     cantidad_habitantes = readIntegerInput("Ingrese la cantidad de habitantes que desea agregar ");
+    cantones->editHabitantes(nombre_canton,cantidad_habitantes);
 }
 
 void modificarCantonMenu() {
@@ -202,6 +206,13 @@ void consultarCanton(){
     cantones->displayCanton(nombre_canton);
 }
 
+void mostrarCantones(){
+    cout << "----------------------------------" << endl;
+    cout << "     Lista de Cantones" << endl;
+    cout << "----------------------------------" << endl;
+    cantones->display();
+}
+
 void menu() {
     while (!exit_program)
     {
@@ -234,6 +245,14 @@ void menu() {
         }
          case 3: {
             consultarCanton();
+            break;
+        }
+         case 4: {
+            
+            break;
+        }
+         case 5: {
+            mostrarCantones();
             break;
         }
         case 0: {

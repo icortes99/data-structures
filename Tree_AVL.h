@@ -13,6 +13,9 @@ public:
 	NodeTAVL*& getRoot();
 	void setRoot(NodeTAVL*);
 	void displayCanton(std::string pnombre);
+	void editDistrito(std::string ,std::string);
+	void editAlcalde(std::string,std::string);
+	void editHabitantes(std::string,int);
 
 
 private:
@@ -26,8 +29,8 @@ private:
 	void makeEmpty(NodeTAVL*);
 	int getBalance(NodeTAVL*);
 	void inorder(NodeTAVL*);
-	NodeTAVL* searchCanton(NodeTAVL*,std::string pnombre);
-
+	NodeTAVL* searchCanton(NodeTAVL*,std::string );
+	
 	/*Recursive Operations*/
 	NodeTAVL* singleRightRotate(NodeTAVL*&);
 	NodeTAVL* singleLeftRotate(NodeTAVL*&);

@@ -117,7 +117,7 @@ void Tree_AVL::inorder(NodeTAVL* t)
     if (t == NULL)
         return;
     inorder(t->left);
-    cout << t->canton->get_nombre() << " ";
+    cout << t->canton->get_nombre() << endl;
     inorder(t->right);
 }
 
@@ -160,4 +160,32 @@ NodeTAVL* Tree_AVL::searchCanton(NodeTAVL* t, std::string pnombre)
 
     return searchCanton(t->left,pnombre);
  
+}
+
+void Tree_AVL::editDistrito(std::string pnombre,std::string pdistrito){
+    NodeTAVL* aux = searchCanton(root, pnombre);
+    if(aux->getCanton()->get_nombre() == pnombre){
+        aux->getCanton()->set_distrito(pdistrito);
+        cout <<"El distrito se cambiado exitosamente a: " << aux->getCanton()->get_distrito() << endl;
+    }else{
+        cout <<"No se encontraron datos "<< endl;
+    }
+}
+
+void Tree_AVL::editAlcalde(std::string pnombre,std::string palcalde){
+    NodeTAVL* aux = searchCanton(root, pnombre);
+    if(aux->getCanton()->get_nombre() == pnombre){
+        aux->getCanton()->set_alcalde(palcalde);
+        cout <<"El nombre del alcalde se ha editado exitosamente a: " << aux->getCanton()->get_alcalde() << endl;
+    }else{
+        cout <<"No se encontraron datos "<< endl;
+    }
+}
+
+void Tree_AVL::editHabitantes(std::string pnombre,int phabitantes){
+    NodeTAVL* aux = searchCanton(root, pnombre);
+    if(aux->getCanton()->get_nombre() == pnombre){
+         aux->getCanton()->set_habitantes(phabitantes);
+          cout <<"La cantidad de habitantes se ha editado exitosamente a: " << aux->getCanton()->get_habitantes() << endl;
+    }
 }
