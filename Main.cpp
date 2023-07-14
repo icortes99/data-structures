@@ -15,7 +15,7 @@ void menu();
 
 using namespace std;
 
-Tree_AVL* cantones = new Tree_AVL();
+Tree_AVL* lcantones = new Tree_AVL();
 
 string nombre_canton, nombre_distrito, nombre_alcalde;
 int cantidad_habitantes, modificar_opcion, main_choice, provincia_opcion;
@@ -41,7 +41,7 @@ void leerCantones() {
             
             Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
 
-            cantones->add(canton);
+            lcantones->add(canton);
         }
         inputFile.close();
     }
@@ -96,21 +96,21 @@ void modificarDistrito()
 {
    nombre_canton = readStringInput("Ingrese el nombre del canton");
    nombre_distrito = readStringInput("Ingrese el nuevo distrito");
-   cantones->editDistrito(nombre_canton,nombre_distrito);
+   lcantones->editDistrito(nombre_canton,nombre_distrito);
 }
 
 void modificarAlcalde()
 {
     nombre_canton = readStringInput("Ingrese el nombre del canton");
     nombre_alcalde = readStringInput("Ingrese el nombre del nuevo alcalde(sa)");
-    cantones->editAlcalde(nombre_canton,nombre_alcalde);
+    lcantones->editAlcalde(nombre_canton,nombre_alcalde);
 }
 
 void modificarHabitantes()
 {
     nombre_canton = readStringInput("Ingrese el nombre del canton");
     cantidad_habitantes = readIntegerInput("Ingrese la cantidad de habitantes que desea agregar ");
-    cantones->editHabitantes(nombre_canton,cantidad_habitantes);
+    lcantones->editHabitantes(nombre_canton,cantidad_habitantes);
 }
 
 void modificarCantonMenu() {
@@ -175,11 +175,11 @@ void consultarProvincia() {
 
     switch (provincia_opcion) {
     case 1: {
-        cantones->display();
+        lcantones->display();
         break;
     }
     case 2: {
-        cantones->display();
+        lcantones->display();
         break;
     }
     case 0: {
@@ -203,14 +203,14 @@ void consultarCanton(){
     
     nombre_canton = readStringInput("Ingrese el nombre del canton que desea consultar: ");
 
-    cantones->displayCanton(nombre_canton);
+    lcantones->displayCanton(nombre_canton);
 }
 
 void mostrarCantones(){
     cout << "----------------------------------" << endl;
     cout << "     Lista de Cantones" << endl;
     cout << "----------------------------------" << endl;
-    cantones->display();
+    lcantones->display();
 }
 
 void menu() {

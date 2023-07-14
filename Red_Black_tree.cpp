@@ -21,25 +21,24 @@ bool Red_Black_tree::isEmpty(){
 	return false;
 }
 
-void Red_Black_tree::add(NodeRB* newNode){
-	addNode(newNode, this->root);
+void Red_Black_tree::add(Provincia* newProvincia){
+	NodeRB* aux = new NodeRB();
+	aux->setProvincia(newProvincia);
+
+	addNode(aux, this->root);
 	organize();
 }
 
-void Red_Black_tree::remove(int removeKey){
-	deleteNode(removeKey, this->root);
-	organize();
-}
 
 void Red_Black_tree::addNode(NodeRB* newNode, NodeRB* tree_root){
 	if (tree_root == nullptr) {
 		setRoot(newNode);
 	}
 	else {
-		if (newNode->getKey() == tree_root->getKey()) {
-			cout << "Key already exists" << endl;
+		if (newNode->getProvincia()->getNombreProvincia() == tree_root->getProvincia()->getNombreProvincia()) {
+			cout << "La provincia ya existe" << endl;
 		}
-		else if (newNode->getKey() < tree_root->getKey()) {
+		else if (newNode->getProvincia()->getNombreProvincia() < tree_root->getProvincia()->getNombreProvincia()) {
 			if (tree_root->getLeft() == nullptr) {
 				tree_root->setLeft(newNode);
 				newNode->setParent(tree_root);
@@ -58,68 +57,6 @@ void Red_Black_tree::addNode(NodeRB* newNode, NodeRB* tree_root){
 			}
 		}
 	}
-}
-
-void Red_Black_tree::deleteNode(int key_to_delete, NodeRB* tree_root){
-	if (tree_root == nullptr) {
-		cout << "Key not found" << endl;
-		return;
-	}
-
-	NodeRB* node = find(key_to_delete, tree_root);
-
-	if (node == nullptr) {
-		cout << "Key not found" << endl;
-		return;
-	}
-
-	NodeRB* child = nullptr;
-	NodeRB* parent = nullptr;
-	bool is_left_child = false;
-
-	if (node->getLeft() != nullptr && node->getRight() != nullptr) {
-		NodeRB* predecessor = findSuccessor(node);
-		node->setKey(predecessor->getKey());
-		node = predecessor;
-	}
-
-	if (node->getLeft() != nullptr) {
-		child = node->getLeft();
-	}
-	else {
-		child = node->getRight();
-	}
-
-	parent = node->getParent();
-
-	if (parent == nullptr) {
-		setRoot(child);
-	}
-	else {
-		if (node == parent->getLeft()) {
-			parent->setLeft(child);
-			is_left_child = true;
-		}
-		else {
-			parent->setRight(child);
-			is_left_child = false;
-		}
-	}
-
-	if (child != nullptr) {
-		child->setParent(parent);
-	}
-
-	if (!node->getColor()) {
-		if (child != nullptr && child->getColor()) {
-			child->setBlack();
-		}
-		else {
-			deleteAdjustment(child, parent, is_left_child);
-		}
-	}
-
-	delete node;
 }
 
 void Red_Black_tree::organize(){
@@ -378,7 +315,7 @@ void Red_Black_tree::printInOrder(NodeRB* node){
 	}
 
 	printInOrder(node->getLeft());
-	cout << node->getKey() << " ";
+	cout << node->getProvincia()->getNombreProvincia() << endl;
 	printInOrder(node->getRight());
 }
 
@@ -393,18 +330,18 @@ void Red_Black_tree::printTree(){
 	cout << endl;
 }
 
-NodeRB* Red_Black_tree::find(int keyNode, NodeRB* tree_root){
+NodeRB* Red_Black_tree::find(std::string nombreProvincia, NodeRB* tree_root){
 	if (tree_root == nullptr) {
 		return nullptr;
 	}
 
-	if (keyNode == tree_root->getKey()) {
+	if (nombreProvincia == tree_root->getProvincia()->getNombreProvincia()) {
 		return tree_root;
 	}
-	else if (keyNode < tree_root->getKey()) {
-		return find(keyNode, tree_root->getLeft());
+	else if (nombreProvincia < tree_root->getProvincia()->getNombreProvincia()) {
+		return find(nombreProvincia, tree_root->getLeft());
 	}
 	else {
-		return find(keyNode, tree_root->getRight());
+		return find(nombreProvincia, tree_root->getRight());
 	}
 }

@@ -2,25 +2,23 @@
 #include <iostream>
 
 NodeRB::NodeRB(){
-	this->key = 0;
-	this->data = "";
+	this->provincia = NULL;
 	this->color = false;
 	this->parent = NULL;
 	this->left = NULL;
 	this->right = NULL;
 }
 
-NodeRB::NodeRB(int newKey, string newData){
-	this->key = newKey;
-	this->data = newData;
+NodeRB::NodeRB(Provincia* newProvincia){
+	this->provincia = newProvincia;
 	this->color = false;
 	this->parent = NULL;
 	this->left = NULL;
 	this->right = NULL;
 }
 
-string NodeRB::getData(){
-	return this->data;
+Provincia*NodeRB::getProvincia(){
+	return this->provincia;
 }
 
 NodeRB*& NodeRB::getLeft(){
@@ -39,16 +37,8 @@ bool NodeRB::getColor(){
 	return this->color;
 }
 
-int NodeRB::getKey(){
-	return this->key;
-}
-
-void NodeRB::setKey(int newKey){
-	this->key = newKey;
-}
-
-void NodeRB::setData(string newData){
-	this->data = newData;
+void NodeRB::setProvincia(Provincia* pProvincia){
+	this->provincia = pProvincia;
 }
 
 void NodeRB::setLeft(NodeRB* newLeft){
@@ -76,9 +66,6 @@ void NodeRB::setBlack(){
 }
 
 void NodeRB::printNode(){
-	std::cout << "Key: ";
-	std::cout << this->key;
-	std::cout << ", data: ";
-	std::cout << this->data;
-	std::cout << "" << endl;
+	std::cout << "data: ";
+	std::cout << this->provincia << endl;
 }

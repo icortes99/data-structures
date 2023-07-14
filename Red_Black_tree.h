@@ -7,7 +7,6 @@ private:
 	
 	//Recursive operations, strictly internal
 	void addNode(NodeRB*, NodeRB*);
-	void deleteNode(int, NodeRB*);
 	void organize();
 	void rotateLeft(NodeRB*);
 	void rotateRight(NodeRB*);
@@ -22,8 +21,7 @@ public:
 	void setRoot(NodeRB*);
 
 	bool isEmpty();
-	void add(NodeRB*);
-	void remove(int);
+	void add(Provincia*);
 	void printTree();
-	NodeRB* find(int, NodeRB*);
+	NodeRB* find(std::string,NodeRB*);
 };

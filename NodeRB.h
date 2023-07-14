@@ -1,11 +1,11 @@
 #pragma once
+#include "Provincia.h"
 #include <string>
 using namespace std;
 
 class NodeRB {
 private:
-	int key; //the key is like the ID, it's used for adding and deleting the whole node
-	string data; //it's needed for saving information, the object could have more attributes
+	Provincia* provincia;
 	bool color; //color is either black = false, or red = true
 	NodeRB* parent;
 	NodeRB* left;
@@ -13,16 +13,14 @@ private:
 
 public:
 	NodeRB();
-	NodeRB(int, string);
-	string getData();
+	NodeRB(Provincia*);
+	Provincia* getProvincia();
 	NodeRB*& getLeft();
 	NodeRB*& getRight();
 	NodeRB*& getParent();
 	bool getColor(); // black = false, or red = true
-	int getKey();
 
-	void setKey(int);
-	void setData(string);
+	void setProvincia(Provincia*);
 	void setLeft(NodeRB *);
 	void setRight(NodeRB *);
 	void setColor(bool);
