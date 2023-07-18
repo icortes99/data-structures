@@ -17,6 +17,7 @@ void menu();
 using namespace std;
 Tree_AVL* lcantones = new Tree_AVL();
 Red_Black_tree* lprovincia_canton = new Red_Black_tree();
+BTree* lpoblacion = new BTree(3); 
 
 string nombre_canton, nombre_distrito, nombre_alcalde;
 int cantidad_habitantes, modificar_opcion, main_choice, provincia_opcion;
@@ -60,16 +61,15 @@ void leerCantones() {
             getline(ss, habitantes, ',');
             
             Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
-            
 
             nombre_provincia = getProvincia(stoi(provincia_id));
             provinciaCanton = nombre_provincia + "-" + nombre;
+            NodeRB* aux = new NodeRB(provinciaCanton, canton);
 
             lcantones->add(canton);
-            lprovincia_canton->add(provinciaCanton, canton);
-            cout << provinciaCanton << endl;
-
-            
+            lprovincia_canton->add(aux);
+            lpoblacion->insert(stoi(habitantes), canton, aux);
+            cout << provinciaCanton << endl;            
         }
         inputFile.close();
     }
