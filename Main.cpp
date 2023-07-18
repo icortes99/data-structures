@@ -66,7 +66,7 @@ void leerCantones() {
             provinciaCanton = nombre_provincia + "-" + nombre;
 
             lcantones->add(canton);
-            lprovincia_canton->add(provinciaCanton);
+            lprovincia_canton->add(provinciaCanton, canton);
             cout << provinciaCanton << endl;
 
             

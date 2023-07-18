@@ -14,7 +14,7 @@ private:
 
 public:
 	NodeRB();
-	NodeRB(std::string);
+	NodeRB(std::string,Canton*);
 	~NodeRB();
 	std::string getProvinciaCanton();
 	NodeRB*& getLeft();
@@ -22,7 +22,7 @@ public:
 	NodeRB*& getParent();
 	bool getColor(); // black = false, or red = true
 	
-	void setProvinciaCanton(std::string);
+	void setProvinciaCanton(std::string,Canton*);
 	void setLeft(NodeRB *);
 	void setRight(NodeRB *);
 	void setColor(bool);

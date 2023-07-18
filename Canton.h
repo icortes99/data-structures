@@ -26,5 +26,4 @@ public:
     int get_habitantes();
 
     void imprimir();
-    std::string obtenerProvincia(int);
 };

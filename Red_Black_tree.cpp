@@ -21,8 +21,8 @@ bool Red_Black_tree::isEmpty(){
 	return false;
 }
 
-void Red_Black_tree::add(std::string newProvinciaCanton){
-	NodeRB* aux = new NodeRB(newProvinciaCanton);
+void Red_Black_tree::add(std::string newProvinciaCanton, Canton* cantonPtr){
+	NodeRB* aux = new NodeRB(newProvinciaCanton, cantonPtr);
 	addNode(aux, this->root);
 	organize();
 }
