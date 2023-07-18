@@ -6,6 +6,7 @@
 #include <cctype>
 #include <iostream>
 #include <locale> 
+#include <unordered_map>
 #include "Red_Black_tree.h"
 #include "Tree_AVL.h"
 #include "BTree.h"
@@ -14,17 +15,36 @@ void menu();
 
 
 using namespace std;
-
 Tree_AVL* lcantones = new Tree_AVL();
+Red_Black_tree* lprovincia_canton = new Red_Black_tree();
 
 string nombre_canton, nombre_distrito, nombre_alcalde;
 int cantidad_habitantes, modificar_opcion, main_choice, provincia_opcion;
 bool exit_program = false;
 
+std::string getProvincia(int id_provincia) {
+    std::unordered_map<int, std::string> mappings = {
+        {1, "SANJOSE"},
+        {2, "ALAJUELA"},
+        {3, "CARTAGO"},
+        {4, "HEREDIA"},
+        {5, "GUANACASTE"},
+        {6, "PUNTARENAS"},
+        {7, "LIMON"}
+    };
+
+    auto it = mappings.find(id_provincia);
+    if (it != mappings.end()) {
+        return it->second;
+    }
+
+    return "Unknown";
+}
+
 void leerCantones() {
     std::ifstream inputFile("Cantones.txt");
 
-    std::string nombre, distrito, provincia_id, alcalde, habitantes;
+    std::string nombre, distrito, provincia_id, alcalde, habitantes, nombre_provincia, provinciaCanton;
 
     std::string line;
 
@@ -40,8 +60,16 @@ void leerCantones() {
             getline(ss, habitantes, ',');
             
             Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
+            
+
+            nombre_provincia = getProvincia(stoi(provincia_id));
+            provinciaCanton = nombre_provincia + "-" + nombre;
 
             lcantones->add(canton);
+            lprovincia_canton->add(provinciaCanton);
+            cout << provinciaCanton << endl;
+
+            
         }
         inputFile.close();
     }

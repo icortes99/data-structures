@@ -1,11 +1,12 @@
 #pragma once
-#include "Provincia.h"
+#include "Canton.h"
 #include <string>
 using namespace std;
 
 class NodeRB {
 private:
-	Provincia* provincia;
+	Canton* canton;
+	std::string provinciaCanton;
 	bool color; //color is either black = false, or red = true
 	NodeRB* parent;
 	NodeRB* left;
@@ -13,14 +14,15 @@ private:
 
 public:
 	NodeRB();
-	NodeRB(Provincia*);
-	Provincia* getProvincia();
+	NodeRB(std::string);
+	~NodeRB();
+	std::string getProvinciaCanton();
 	NodeRB*& getLeft();
 	NodeRB*& getRight();
 	NodeRB*& getParent();
 	bool getColor(); // black = false, or red = true
-
-	void setProvincia(Provincia*);
+	
+	void setProvinciaCanton(std::string);
 	void setLeft(NodeRB *);
 	void setRight(NodeRB *);
 	void setColor(bool);

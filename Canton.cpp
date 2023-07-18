@@ -52,28 +52,28 @@ void Canton::imprimir() {
 	cout << "Canton: " << this->nombre << ", distrito cabecera: " << this->distrito << ", provincia: " << obtenerProvincia(this->provincia_id) << ", alcalde: " << this->alcalde << ", cantidad de habitantes: " << this->habitantes << endl;
 }
 
-string Canton::obtenerProvincia(int idProvincia) {
+std::string Canton::obtenerProvincia(int idProvincia) {
 	switch (idProvincia) {
 	case 1:
-		return "SanJose";
+		return "SANJOSE";
 		break;
 	case 2:
-		return "Alajuela";
+		return "ALAJUELA";
 		break;
 	case 3:
-		return "Cartago";
+		return "CARTAGO";
 		break;
 	case 4:
-		return "Heredia";
+		return "HEREDIA";
 		break;
 	case 5:
-		return "Guanacaste";
+		return "GUANACASTE";
 		break;
 	case 6:
-		return "Puntarenas";
+		return "PUNTARENAS";
 		break;
 	case 7:
-		return "Limon";
+		return "LIMON";
 		break;
 	default:
 		return "Null";

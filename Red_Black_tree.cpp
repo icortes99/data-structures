@@ -21,10 +21,8 @@ bool Red_Black_tree::isEmpty(){
 	return false;
 }
 
-void Red_Black_tree::add(Provincia* newProvincia){
-	NodeRB* aux = new NodeRB();
-	aux->setProvincia(newProvincia);
-
+void Red_Black_tree::add(std::string newProvinciaCanton){
+	NodeRB* aux = new NodeRB(newProvinciaCanton);
 	addNode(aux, this->root);
 	organize();
 }
@@ -35,10 +33,10 @@ void Red_Black_tree::addNode(NodeRB* newNode, NodeRB* tree_root){
 		setRoot(newNode);
 	}
 	else {
-		if (newNode->getProvincia()->getNombreProvincia() == tree_root->getProvincia()->getNombreProvincia()) {
-			cout << "La provincia ya existe" << endl;
+		if (newNode->getProvinciaCanton() == tree_root->getProvinciaCanton()) {
+			cout << "El canton en la provincia ya existe" << endl;
 		}
-		else if (newNode->getProvincia()->getNombreProvincia() < tree_root->getProvincia()->getNombreProvincia()) {
+		else if (newNode->getProvinciaCanton() < tree_root->getProvinciaCanton()) {
 			if (tree_root->getLeft() == nullptr) {
 				tree_root->setLeft(newNode);
 				newNode->setParent(tree_root);
@@ -315,7 +313,7 @@ void Red_Black_tree::printInOrder(NodeRB* node){
 	}
 
 	printInOrder(node->getLeft());
-	cout << node->getProvincia()->getNombreProvincia() << endl;
+	cout << node->getProvinciaCanton() << endl;
 	printInOrder(node->getRight());
 }
 
@@ -330,18 +328,18 @@ void Red_Black_tree::printTree(){
 	cout << endl;
 }
 
-NodeRB* Red_Black_tree::find(std::string nombreProvincia, NodeRB* tree_root){
+NodeRB* Red_Black_tree::find(std::string provinciaCanton, NodeRB* tree_root){
 	if (tree_root == nullptr) {
 		return nullptr;
 	}
 
-	if (nombreProvincia == tree_root->getProvincia()->getNombreProvincia()) {
+	if (provinciaCanton == tree_root->getProvinciaCanton()) {
 		return tree_root;
 	}
-	else if (nombreProvincia < tree_root->getProvincia()->getNombreProvincia()) {
-		return find(nombreProvincia, tree_root->getLeft());
+	else if (provinciaCanton < tree_root->getProvinciaCanton()) {
+		return find(provinciaCanton, tree_root->getLeft());
 	}
 	else {
-		return find(nombreProvincia, tree_root->getRight());
+		return find(provinciaCanton, tree_root->getRight());
 	}
 }

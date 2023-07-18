@@ -21,7 +21,7 @@ public:
 	void setRoot(NodeRB*);
 
 	bool isEmpty();
-	void add(Provincia*);
+	void add(std::string);
 	void printTree();
 	NodeRB* find(std::string,NodeRB*);
 };
