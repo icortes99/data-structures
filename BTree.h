@@ -17,5 +17,6 @@ public:
     void insert(int key, Canton *cantonPtr, NodeRB *provinciaCantonPtr);
 
 private:
-    //
+    void insertNonFull(BTreeNode* node, int key, Canton* cantonPtr, NodeRB* provinciaCantonPtr);
+    void splitChild(BTreeNode* parentNode, int childIndex, BTreeNode* childNode);
 };
