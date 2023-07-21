@@ -22,7 +22,7 @@ void BTreeNode::traverse() {
             children[i]->traverse();
         std::cout << "Poblacion: " << keys[i]<< endl;
         std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
-        std::cout << "Provincia: " << split(provinciaCantonPtrs[i]->getProvinciaCanton(), '-'); 
+        std::cout << "Provincia: " << split(provinciaCantonPtrs[i]->getProvinciaCanton(), '-')<< endl; 
         std::cout << endl;
     }
 
