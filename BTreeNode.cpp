@@ -6,6 +6,15 @@
 
 BTreeNode::BTreeNode(int _t, bool _leaf) : t(_t), leaf(_leaf) {}
 
+std::string BTreeNode::split(const std::string& input, char delimiter){
+    size_t pos = input.find(delimiter);
+    if (pos != std::string::npos) {
+        return input.substr(0, pos);
+    }
+    return input;
+
+}
+
 void BTreeNode::traverse() {
     int i;
     for (i = 0; i < keys.size(); i++) {
@@ -13,7 +22,8 @@ void BTreeNode::traverse() {
             children[i]->traverse();
         std::cout << "Poblacion: " << keys[i]<< endl;
         std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
-        std::cout<< endl;
+        std::cout << "Provincia: " << split(provinciaCantonPtrs[i]->getProvinciaCanton(), '-'); 
+        std::cout << endl;
     }
 
     if (!leaf)

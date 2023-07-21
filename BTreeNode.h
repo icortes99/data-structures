@@ -21,6 +21,7 @@ public:
     void traversalDesc(BTreeNode*);
     BTreeNode* search(int key);
     friend class BTree;
+    std::string split(const std::string&, char);
     
 
 };
