@@ -242,6 +242,10 @@ void mostrarCantones(){
     lcantones->display();
 }
 
+void mostarCantonPoblacion(){
+    lpoblacion.traverse();
+}
+
 void menu() {
     while (!exit_program)
     {
@@ -282,6 +286,10 @@ void menu() {
         }
          case 5: {
             mostrarCantones();
+            break;
+        }
+         case 7: {
+            mostarCantonPoblacion();
             break;
         }
         case 0: {

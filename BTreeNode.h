@@ -17,6 +17,8 @@ class BTreeNode
 public:
     BTreeNode(int _t, bool _leaf);
     void traverse();
+    void inOrderTraversalDesc();
+    void traversalDesc(BTreeNode*);
     BTreeNode* search(int key);
     friend class BTree;
     

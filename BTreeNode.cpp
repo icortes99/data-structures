@@ -11,11 +11,29 @@ void BTreeNode::traverse() {
     for (i = 0; i < keys.size(); i++) {
         if (!leaf)
             children[i]->traverse();
-        std::cout << " " << keys[i];
+        std::cout << "Poblacion: " << keys[i]<< endl;
+        std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
+        std::cout<< endl;
     }
 
     if (!leaf)
         children[i]->traverse();
+}
+
+
+
+void BTreeNode::inOrderTraversalDesc() {
+    int i;
+    for (i = keys.size()-1; i >= 0; i--) {
+        if (!leaf)
+            children[i]->inOrderTraversalDesc();
+        std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
+        std::cout << "Poblacion: " << keys[i]<< endl;
+        std::cout<< endl;
+    }
+
+    if (!leaf)
+        children[i]->inOrderTraversalDesc();
 }
 
 BTreeNode* BTreeNode::search(int key) {

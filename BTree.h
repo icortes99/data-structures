@@ -14,7 +14,10 @@ public:
     BTree(int _t);
     void traverse();
     BTreeNode *search(int key);
+    BTreeNode* getRoot();
     void insert(int key, Canton *cantonPtr, NodeRB *provinciaCantonPtr);
+    void inOrderDesc();
+     void inOrderTraversalDesc();
 
 private:
     void insertNonFull(BTreeNode* node, int key, Canton* cantonPtr, NodeRB* provinciaCantonPtr);

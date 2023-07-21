@@ -3,10 +3,19 @@
 // Insertion operation
 BTree::BTree(int _t) : root(nullptr), t(_t) {}
 
+BTreeNode* BTree::getRoot() {
+    return root;
+}
+
 void BTree::traverse()
 {
     if (root != nullptr)
         root->traverse();
+}
+
+void BTree::inOrderTraversalDesc(){
+
+    root->inOrderTraversalDesc();
 }
 
 BTreeNode *BTree::search(int key)
