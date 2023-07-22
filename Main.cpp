@@ -64,13 +64,14 @@ void leerCantones() {
             Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
 
             nombre_provincia = getProvincia(stoi(provincia_id));
-            provinciaCanton = nombre_provincia + "-" + nombre;
+            provinciaCanton = provincia_id + "-" + nombre;
+            //provinciaCanton = nombre_provincia + "-" + nombre;
             NodeRB* aux = new NodeRB(provinciaCanton, canton);
 
             lcantones->add(canton);
             lprovincia_canton->add(aux);
             lpoblacion.insert(stoi(habitantes), canton, aux);
-            cout << provinciaCanton << endl;            
+            //cout << provinciaCanton[0] << endl;            
         }
         inputFile.close();
     }
@@ -266,6 +267,58 @@ void mostrarProvinciasCantonesPoblacionRef() {
     lpoblacion.traverseCantProvPoblacionRefe(pobReferencia);
 }
 
+//este es el 10
+void mostrarCantonerPorProvincia() {
+    lprovincia_canton->printTree();
+}
+
+//este es el 4
+void mostrarCantonesDeProvincia() {
+    //preguntar por id provincia o nombre provincia
+    std::cout << "Si conoces el id de la provincia, digitalo, si no, oprime 0 para ecribir:" << endl;
+    int opc = readIntegerInput("Seleccione una opcion:  ");
+
+    if (opc == 0) {
+        //escribir provincia, transformar a int y preguntar
+        std::cout << "Digita el nombre de la provincia:" << endl;
+        std::string prov;
+        std::getline(std::cin, prov);
+        std::cout << prov << endl;
+
+        std::string comparar = toUpperCase(prov);
+        
+        if (comparar == "SAN JOSE") {
+            lprovincia_canton->printProvincia(1);
+        }
+        else if (comparar == "ALAJUELA") {
+            lprovincia_canton->printProvincia(2);
+        }
+        else if (comparar == "CARTAGO") {
+            lprovincia_canton->printProvincia(3);
+        }
+        else if (comparar == "HEREDIA") {
+            lprovincia_canton->printProvincia(4);
+        }
+        else if (comparar == "GUANACASTE") {
+            lprovincia_canton->printProvincia(5);
+        }
+        else if (comparar == "PUNTARENAS") {
+            lprovincia_canton->printProvincia(6);
+        }
+        else if (comparar == "LIMON") {
+            lprovincia_canton->printProvincia(opc);
+        }
+        else {
+            std::cout << "Nombre invalido. " << endl;
+        }
+
+    } else if (opc > 7) {
+        std::cout << "Opcion invalida. " << endl;
+    } else {
+        lprovincia_canton->printProvincia(opc);
+    }
+}
+
 void menu() {
     while (!exit_program)
     {
@@ -281,6 +334,7 @@ void menu() {
         cout << "(7) Mostrar cantones por poblacion  " << endl;
         cout << "(8) Mostrar provincia y cantones por poblacion   " << endl;
         cout << "(9) Mostrar provincia y cantones por referencia  " << endl;
+        cout << "(10) Mostrar cantones ordenados por provincia  " << endl;
         cout << "(0) Finalizar" << endl;
 
         main_choice = readIntegerInput("Seleccione una opcion ->  ");
@@ -296,19 +350,19 @@ void menu() {
             consultarProvincia();
             break;
         }
-         case 3: {
+        case 3: {
             consultarCanton();
             break;
         }
-         case 4: {
-            
+        case 4: {
+            mostrarCantonesDeProvincia();
             break;
         }
-         case 5: {
+        case 5: {
             mostrarCantones();
             break;
         }
-         case 7: {
+        case 7: {
             mostarCantonPoblacion();
             break;
         }
@@ -319,6 +373,10 @@ void menu() {
         }
         case 9: {
             mostrarProvinciasCantonesPoblacionRef();
+            break;
+        }
+        case 10: {
+            mostrarCantonerPorProvincia();
             break;
         }
         case 0: {

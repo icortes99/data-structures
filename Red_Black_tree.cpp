@@ -33,7 +33,7 @@ void Red_Black_tree::addNode(NodeRB* newNode, NodeRB* tree_root){
 	}
 	else {
 		if (newNode->getProvinciaCanton() == tree_root->getProvinciaCanton()) {
-			cout << "El canton en la provincia ya existe" << endl;
+			std::cout << "El canton en la provincia ya existe" << endl;
 		}
 		else if (newNode->getProvinciaCanton() < tree_root->getProvinciaCanton()) {
 			if (tree_root->getLeft() == nullptr) {
@@ -312,19 +312,104 @@ void Red_Black_tree::printInOrder(NodeRB* node){
 	}
 
 	printInOrder(node->getLeft());
-	cout << node->getProvinciaCanton() << endl;
+	char idProvincia = node->getProvinciaCanton()[0];
+	string reemplazo = "";
+	string valor = node->getProvinciaCanton();
+	switch (idProvincia) {
+	case '1':
+		reemplazo = "SAN JOSE";
+		break;
+	case '2':
+		reemplazo = "ALAJUELA";
+		break;
+	case '3':
+		reemplazo = "CARTAGO";
+		break;
+	case '4':
+		reemplazo = "HEREDIA";
+		break;
+	case '5':
+		reemplazo = "GUANACASTE";
+		break;
+	case '6':
+		reemplazo = "PUNTARENAS";
+		break;
+	case '7':
+		reemplazo = "LIMON";
+		break;
+	default:
+		break;
+	}
+	valor.replace(0, 1, reemplazo);
+	std::cout << valor << endl;
 	printInOrder(node->getRight());
+}
+
+void Red_Black_tree::printInOrderProvincia(NodeRB* node, int idProvincia){
+	if (node == nullptr) {
+		return;
+	}
+
+	printInOrderProvincia(node->getLeft(), idProvincia);
+
+	/******************* Validacion de provincias *************************/
+	char idProvinci = node->getProvinciaCanton()[0];
+	string reemplazo = "";
+	string valor = node->getProvinciaCanton();
+	switch (idProvinci) {
+	case '1':
+		reemplazo = "SAN JOSE";
+		break;
+	case '2':
+		reemplazo = "ALAJUELA";
+		break;
+	case '3':
+		reemplazo = "CARTAGO";
+		break;
+	case '4':
+		reemplazo = "HEREDIA";
+		break;
+	case '5':
+		reemplazo = "GUANACASTE";
+		break;
+	case '6':
+		reemplazo = "PUNTARENAS";
+		break;
+	case '7':
+		reemplazo = "LIMON";
+		break;
+	default:
+		break;
+	}
+	valor.replace(0, 1, reemplazo);
+	/******************* Validacion de provincias *************************/
+
+	int validacion = idProvinci - '0';
+
+	if (validacion == idProvincia) {
+		std::cout << valor << endl;
+	}
+	printInOrderProvincia(node->getRight(), idProvincia);
 }
 
 void Red_Black_tree::printTree(){
 	if (isEmpty()) {
-		cout << "Tree is empty." << endl;
+		std::cout << "Tree is empty." << endl;
 		return;
 	}
 
-	cout << "Tree elements in ascending order: ";
+	std::cout << "Tree elements in ascending order: ";
 	printInOrder(root);
-	cout << endl;
+	std::cout << endl;
+}
+
+void Red_Black_tree::printProvincia(int idProvincia){
+	if (isEmpty()) {
+		std::cout << "Tree is empty." << endl;
+		return;
+	}
+
+	printInOrderProvincia(getRoot(), idProvincia);
 }
 
 NodeRB* Red_Black_tree::find(std::string provinciaCanton, NodeRB* tree_root){
