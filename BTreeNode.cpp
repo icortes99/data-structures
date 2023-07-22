@@ -34,7 +34,7 @@ void BTreeNode::traverse() {
 
 void BTreeNode::inOrderTraversalDesc() {
     int i;
-    for (i = keys.size()-1; i >= 0; i--) {
+    for (i = (int)keys.size()-1; i >= 0; i--) {
         if (!leaf)
             children[i]->inOrderTraversalDesc();
         std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;

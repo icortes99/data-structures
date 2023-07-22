@@ -236,7 +236,7 @@ void consultarCanton(){
 }
 
 void mostrarCantones(){
-    cout << "----------------------------------" << endl;
+    cout << "\n----------------------------------" << endl;
     cout << "     Lista de Cantones" << endl;
     cout << "----------------------------------" << endl;
     lcantones->display();

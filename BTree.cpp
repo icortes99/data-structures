@@ -45,7 +45,7 @@ void BTree::insert(int key, Canton* cantonPtr, NodeRB* provinciaCantonPtr) {
 }
 
 void BTree::insertNonFull(BTreeNode* node, int key, Canton* cantonPtr, NodeRB* provinciaCantonPtr) {
-    int i = node->keys.size() - 1;
+    int i = (int)node->keys.size() - 1;
 
     if (node->leaf) {
         node->keys.push_back(0);
