@@ -105,6 +105,8 @@ std::string toUpperCase(const std::string& str) {
     return result;
 }
 
+
+
 std::string readStringInput(std::string prompt) {
     std::string input;
     while (true) {
@@ -246,6 +248,24 @@ void mostarCantonPoblacion(){
     lpoblacion.traverse();
 }
 
+void mostrarProvinciasCantonesPoblacion() {
+    cout << "\n----------------------------------" << endl;
+    cout << "     Mostrar provincia y cantones por poblacion" << endl;
+    cout << "----------------------------------" << endl;
+    lpoblacion.traverseCantProvPoblacion();
+}
+
+//este es el 9
+void mostrarProvinciasCantonesPoblacionRef() {
+    int pobReferencia = 0;
+    cout << "\n----------------------------------" << endl;
+    cout << "     Mostrar provincia y cantones por poblacion de referencia" << endl;
+    cout << "----------------------------------" << endl;
+    cout << "Digite poblacion de referencia\n> " << endl;
+    cin >> pobReferencia;
+    lpoblacion.traverse();
+}
+
 void menu() {
     while (!exit_program)
     {
@@ -290,6 +310,15 @@ void menu() {
         }
          case 7: {
             mostarCantonPoblacion();
+            break;
+        }
+
+        case 8: {
+            mostrarProvinciasCantonesPoblacion();
+            break;
+        }
+        case 9: {
+            mostrarProvinciasCantonesPoblacionRef();
             break;
         }
         case 0: {
