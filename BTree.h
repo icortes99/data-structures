@@ -14,6 +14,7 @@ public:
     BTree(int _t);
     BTree();
     void traverse();
+    void traverseCantProvPoblacionRefe(int poblacionReferencia);
     void traverseCantProvPoblacion();
     BTreeNode *search(int key);
     BTreeNode* getRoot();

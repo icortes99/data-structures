@@ -46,10 +46,26 @@ void BTreeNode::traverseCantProvPoblacion(int codigoProvincia) {
 
         }
 
-    //if (codigoProvincia == cantonPtrs[i - 1]->get_provincia_id()) {
         if (!leaf)
             children[i]->traverseCantProvPoblacion(codigoProvincia);
-    //}
+}
+
+void BTreeNode::traverseCantProvPoblacionRefe(int codigoProvincia, int poblacionReferencia) {
+    int i;
+    for (i = 0; i < keys.size(); i++) {
+        if (!leaf)
+            children[i]->traverseCantProvPoblacionRefe(codigoProvincia, poblacionReferencia);
+        if (codigoProvincia == cantonPtrs[i]->get_provincia_id() &&  cantonPtrs[i]->get_habitantes() >= poblacionReferencia) {
+            std::cout << "Poblacion: " << keys[i] << endl;
+            std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
+            std::cout << "Provincia: " << split(provinciaCantonPtrs[i]->getProvinciaCanton(), '-') << endl;
+            std::cout << "ID Prov: " << cantonPtrs[i]->get_provincia_id() << endl;
+            std::cout << endl;
+        }
+    }
+
+    if (!leaf)
+        children[i]->traverseCantProvPoblacionRefe(codigoProvincia, poblacionReferencia);
 }
 
 

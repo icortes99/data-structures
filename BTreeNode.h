@@ -18,6 +18,7 @@ public:
     BTreeNode(int _t, bool _leaf);
     void traverse();
     void traverseCantProvPoblacion(int codigoProvincia);
+    void traverseCantProvPoblacionRefe(int codigoProvincia, int poblacionReferencia);
     void inOrderTraversalDesc();
     void traversalDesc(BTreeNode*);
     BTreeNode* search(int key);

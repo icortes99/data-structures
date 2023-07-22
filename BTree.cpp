@@ -18,6 +18,38 @@ void BTree::traverse()
         root->traverse();
 }
 
+void BTree::traverseCantProvPoblacionRefe(int poblacionReferencia)
+{
+    if (root != nullptr) {
+        printHelper("San Jose");
+        root->traverseCantProvPoblacionRefe(1, poblacionReferencia);
+        cout << endl;
+
+        printHelper("Alajuela");
+        root->traverseCantProvPoblacionRefe(2, poblacionReferencia);
+        cout << endl;
+
+        printHelper("Cartago");
+        root->traverseCantProvPoblacionRefe(3, poblacionReferencia);
+        cout << endl;
+
+        printHelper("Heredia");
+        root->traverseCantProvPoblacionRefe(4, poblacionReferencia);
+        cout << endl;
+
+        printHelper("Guanacaste");
+        root->traverseCantProvPoblacionRefe(5, poblacionReferencia);
+
+        printHelper("Puntarenas");
+        root->traverseCantProvPoblacionRefe(6, poblacionReferencia);
+        cout << endl;
+
+        printHelper("Limon");
+        root->traverseCantProvPoblacionRefe(7, poblacionReferencia);
+        cout << endl;
+    }
+}
+
 void BTree::traverseCantProvPoblacion()
 {
     if (root != nullptr) {
@@ -47,12 +79,7 @@ void BTree::traverseCantProvPoblacion()
         printHelper("Limon");
         root->traverseCantProvPoblacion(7);
         cout << endl;
-
-    
-    
-    
-    }
-        
+    }      
 }
 
 void BTree::inOrderTraversalDesc(){

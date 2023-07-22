@@ -263,7 +263,7 @@ void mostrarProvinciasCantonesPoblacionRef() {
     cout << "----------------------------------" << endl;
     cout << "Digite poblacion de referencia\n> " << endl;
     cin >> pobReferencia;
-    lpoblacion.traverse();
+    lpoblacion.traverseCantProvPoblacionRefe(pobReferencia);
 }
 
 void menu() {
