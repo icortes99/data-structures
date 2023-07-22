@@ -128,18 +128,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BTree.cpp" />
+    <ClCompile Include="BTreeNode.cpp" />
     <ClCompile Include="Canton.cpp" />
-    <ClCompile Include="CantonTxt.cpp" />
-    <ClCompile Include="HashTable.cpp" />
-    <ClCompile Include="LeerTxt.cpp" />
     <ClCompile Include="NodeRB.cpp" />
     <ClCompile Include="NodeTAVL.cpp" />
-    <ClCompile Include="NodoTH.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Red_Black_tree.cpp" />
     <ClCompile Include="Tree_AVL.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BTree.h" />
+    <ClInclude Include="BTreeNode.h" />
     <ClInclude Include="Canton.h" />
     <ClInclude Include="CantonTxt.h" />
     <ClInclude Include="HashTable.h" />
