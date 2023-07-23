@@ -283,7 +283,6 @@ void mostrarCantonesDeProvincia() {
         std::cout << "Digita el nombre de la provincia:" << endl;
         std::string prov;
         std::getline(std::cin, prov);
-        std::cout << prov << endl;
 
         std::string comparar = toUpperCase(prov);
         
@@ -306,7 +305,7 @@ void mostrarCantonesDeProvincia() {
             lprovincia_canton->printProvincia(6);
         }
         else if (comparar == "LIMON") {
-            lprovincia_canton->printProvincia(opc);
+            lprovincia_canton->printProvincia(7);
         }
         else {
             std::cout << "Nombre invalido. " << endl;
