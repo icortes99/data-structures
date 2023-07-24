@@ -195,44 +195,9 @@ void modificarCantonMenu() {
 }
 
 void consultarProvincia() {
-    cout << "----------------------------------" << endl;
-    cout << "  Codigo de Provincia" << endl;
-    cout << "----------------------------------" << endl;
-    cout << "(1) San Jose " << endl;
-    cout << "(2) Alajuela " << endl;
-    cout << "(3) Cartago" << endl;
-    cout << "(4) Heredia " << endl;
-    cout << "(5) Guanacaste " << endl;
-    cout << "(6) Puntarenas " << endl;
-    cout << "(7) Limon " << endl;
-    cout << "----------------------------------" << endl;
-    provincia_opcion = readIntegerInput("Digite el numero de la provincia a consultar:  ");
-
-
-    switch (provincia_opcion) {
-    case 1: {
-        lcantones->display();
-        break;
-    }
-    case 2: {
-        lcantones->display();
-        break;
-    }
-    case 0: {
-        cout << "Regresando...." << endl;
-        system("cls");
-        modificarCantonMenu();
-        break;
-    }
-    default: {
-        cout << "Opcion no valida..." << endl;
-        cout << "\n\n";
-        system("cls");
-        break;
-    }
-
-    }
-
+    nombre_provincia = readStringInput("Ingrese el nombre de la provincia: ");
+    std::cout << endl; 
+    lprovincia_canton->printInfoProvincia(nombre_provincia);   
 }
 
 void consultarCanton(){
@@ -249,17 +214,25 @@ void mostrarCantonesDeProvincia() {
     lprovincia_canton->printProvincia(nombre_provincia);
 }
 
+//este es el 5
 void mostrarCantones(){
     cout << "\n----------------------------------" << endl;
     cout << "     Lista de Cantones" << endl;
     cout << "----------------------------------" << endl;
-    lcantones->display();
+    lprovincia_canton->printProvinciaAsced();
 }
 
+//este es el 6
+void mostrarCantonerPorProvincia() {
+    lprovincia_canton->printProvinciaDescend();
+}
+
+//este es el 7
 void mostarCantonPoblacion(){
     lpoblacion.traverse();
 }
 
+//este es el 8
 void mostrarProvinciasCantonesPoblacion() {
     cout << "\n----------------------------------" << endl;
     cout << "     Mostrar provincia y cantones por poblacion" << endl;
@@ -278,10 +251,7 @@ void mostrarProvinciasCantonesPoblacionRef() {
     lpoblacion.traverseCantProvPoblacionRefe(pobReferencia);
 }
 
-//este es el 10
-void mostrarCantonerPorProvincia() {
-    lprovincia_canton->printTree();
-}
+
 
 
 

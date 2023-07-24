@@ -15,7 +15,8 @@ BTreeNode* BTree::getRoot() {
 void BTree::traverse()
 {
     if (root != nullptr)
-        root->traverse();
+       // root->traverse();
+        root->inOrderTraversalDesc();
 }
 
 void BTree::traverseCantProvPoblacionRefe(int poblacionReferencia)
@@ -202,6 +203,7 @@ void BTree::insertNonFull(BTreeNode* node, int key, Canton* cantonPtr, NodeRB* p
         insertNonFull(node->children[i + 1], key, cantonPtr, provinciaCantonPtr);
     }
 }
+
 
 void BTree::splitChild(BTreeNode* parentNode, int childIndex, BTreeNode* childNode) {
     BTreeNode* newNode = new BTreeNode(t, childNode->leaf);

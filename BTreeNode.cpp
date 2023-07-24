@@ -50,37 +50,79 @@ void BTreeNode::traverseCantProvPoblacion(int codigoProvincia) {
             children[i]->traverseCantProvPoblacion(codigoProvincia);
 }
 
+string BTreeNode::getProvinciaByID(int id) {
+    string prov = "";
+    switch (id)
+    {
+    case 1: 
+        prov = "San Jose";
+        break;
+
+    case 2:
+        prov = "Alajuela";
+        break;
+
+    case 3:
+        prov = "Cartago";
+        break;
+
+    case 4:
+        prov = "Heredia";
+        break;
+
+    case 5:
+        prov = "Guanacaste";
+        break;
+
+    case 6:
+        prov = "Puntarenas";
+        break;
+
+    case 7:
+        prov = "Limon";
+        break;
+
+    default:
+        break;
+    }
+
+    return prov;
+}
+
+
 void BTreeNode::traverseCantProvPoblacionRefe(int codigoProvincia, int poblacionReferencia) {
     int i;
-    for (i = 0; i < keys.size(); i++) {
+    for (i = keys.size() - 1; i >= 0; i--) {
         if (!leaf)
-            children[i]->traverseCantProvPoblacionRefe(codigoProvincia, poblacionReferencia);
-        if (codigoProvincia == cantonPtrs[i]->get_provincia_id() &&  cantonPtrs[i]->get_habitantes() >= poblacionReferencia) {
-            std::cout << "Poblacion: " << keys[i] << endl;
-            std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
-            std::cout << "Provincia: " << split(provinciaCantonPtrs[i]->getProvinciaCanton(), '-') << endl;
-            std::cout << "ID Prov: " << cantonPtrs[i]->get_provincia_id() << endl;
-            std::cout << endl;
+            children[i + 1]->traverseCantProvPoblacionRefe(codigoProvincia, poblacionReferencia);
+        if (codigoProvincia == cantonPtrs[i]->get_provincia_id() && cantonPtrs[i]->get_habitantes() >= poblacionReferencia) {
+            std::cout << "Poblacion: " << keys[i] << std::endl;
+            std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << std::endl;
+            std::cout << "Provincia: " << split(provinciaCantonPtrs[i]->getProvinciaCanton(), '-') << std::endl;
+            std::cout << "ID Prov: " << cantonPtrs[i]->get_provincia_id() << std::endl;
+            std::cout << std::endl;
         }
     }
 
     if (!leaf)
-        children[i]->traverseCantProvPoblacionRefe(codigoProvincia, poblacionReferencia);
+        children[i + 1]->traverseCantProvPoblacionRefe(codigoProvincia, poblacionReferencia);
 }
+
 
 
 void BTreeNode::inOrderTraversalDesc() {
     int i;
-    for (i = (int)keys.size()-1; i >= 0; i--) {
+    for (i = (int)keys.size() - 1; i >= 0; i--) {
         if (!leaf)
-            children[i]->inOrderTraversalDesc();
-        std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << endl;
-        std::cout << "Poblacion: " << keys[i]<< endl;
-        std::cout<< endl;
+            children[i + 1]->inOrderTraversalDesc(); // Visit the right child first
+        std::cout << "Canton: " << cantonPtrs[i]->get_nombre() << std::endl;
+        std::cout << "Poblacion: " << keys[i] << std::endl;
+        std::cout << std::endl;
     }
 
+    // Visit the last right child if it exists
     if (!leaf)
-        children[i]->inOrderTraversalDesc();
+        children[i + 1]->inOrderTraversalDesc();
 }
 
 BTreeNode* BTreeNode::search(int key) {
@@ -96,4 +138,3 @@ BTreeNode* BTreeNode::search(int key) {
 
     return children[i]->search(key);
 }
-
