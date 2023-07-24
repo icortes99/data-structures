@@ -15,11 +15,11 @@ private:
 	NodeRB* findSuccessor(NodeRB*);
 	void printInOrder(NodeRB*);
 	void printInOrderProvinciaId(NodeRB*);
-	void printInOrderProvincia();
 	void printProvinciaCantones(NodeRB*,std::string);
 	int totalCantones(NodeRB*,std::string);
 	int totalHabitantes(NodeRB*,std::string);
 	std::string split(const std::string&, char);
+	void printProvinciaCantonInfo(NodeRB*,int);
 
 public:
 	Red_Black_tree();
@@ -28,8 +28,9 @@ public:
 
 	bool isEmpty();
 	void add(NodeRB*);
-	void printTree();
 	void printProvincia(std::string);
 	void printInfoProvincia(std::string);
+	void printProvinciaDescend();
+	void printProvinciaAsced();
 	NodeRB* find(std::string,NodeRB*);
 };

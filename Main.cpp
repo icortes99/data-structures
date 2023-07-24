@@ -219,12 +219,12 @@ void mostrarCantones(){
     cout << "\n----------------------------------" << endl;
     cout << "     Lista de Cantones" << endl;
     cout << "----------------------------------" << endl;
-    lcantones->display();
+    lprovincia_canton->printProvinciaAsced();
 }
 
 //este es el 6
 void mostrarCantonerPorProvincia() {
-    lprovincia_canton->printTree();
+    lprovincia_canton->printProvinciaDescend();
 }
 
 //este es el 7

@@ -315,118 +315,6 @@ NodeRB* Red_Black_tree::findSuccessor(NodeRB* node){
 	}
 }
 
-void Red_Black_tree::printInOrder(NodeRB* node){
-	if (node == nullptr) {
-		return;
-	}
-
-	printInOrder(node->getLeft());
-	// char idProvincia = node->getProvinciaCanton()[0];
-	// string reemplazo = "";
-	// string valor = node->getProvinciaCanton();
-	// switch (idProvincia) {
-	// case '1':
-	// 	reemplazo = "SAN JOSE";
-	// 	break;
-	// case '2':
-	// 	reemplazo = "ALAJUELA";
-	// 	break;
-	// case '3':
-	// 	reemplazo = "CARTAGO";
-	// 	break;
-	// case '4':
-	// 	reemplazo = "HEREDIA";
-	// 	break;
-	// case '5':
-	// 	reemplazo = "GUANACASTE";
-	// 	break;
-	// case '6':
-	// 	reemplazo = "PUNTARENAS";
-	// 	break;
-	// case '7':
-	// 	reemplazo = "LIMON";
-	// 	break;
-	// default:
-	// 	break;
-	// }
-	// valor.replace(0, 1, reemplazo);
-	// std::cout << valor << endl;
-	std::cout << "Canton: " << node->getProvinciaCanton() << endl;
-	std::cout << "Distrito: " <<node->getCanton()->get_distrito() << endl;
-	std::cout << "Cantidad de habitantes: " <<node->getCanton()->get_habitantes() << endl;
-	std::cout << endl;
-	//std::cout << node->getCodigoProvincia() << endl;
-	printInOrder(node->getRight());
-}
-
-
-
-void Red_Black_tree::printInOrderProvincia(){
-	// if (node == nullptr) {
-	// 	return;
-	// }
-
-	// printInOrderProvincia(node->getLeft(), idProvincia);
-
-	// /******************* Validacion de provincias *************************/
-	// char idProvinci = node->getProvinciaCanton()[0];
-	// string reemplazo = "";
-	// string valor = node->getProvinciaCanton();
-	// switch (idProvinci) {
-	// case '1':
-	// 	reemplazo = "SAN JOSE";
-	// 	break;
-	// case '2':
-	// 	reemplazo = "ALAJUELA";
-	// 	break;
-	// case '3':
-	// 	reemplazo = "CARTAGO";
-	// 	break;
-	// case '4':
-	// 	reemplazo = "HEREDIA";
-	// 	break;
-	// case '5':
-	// 	reemplazo = "GUANACASTE";
-	// 	break;
-	// case '6':
-	// 	reemplazo = "PUNTARENAS";
-	// 	break;
-	// case '7':
-	// 	reemplazo = "LIMON";
-	// 	break;
-	// default:
-	// 	break;
-	// }
-	// valor.replace(0, 1, reemplazo);
-	// /******************* Validacion de provincias *************************/
-
-	// int validacion = idProvinci - '0';
-
-	// if (validacion == idProvincia) {
-	// 	std::cout << valor << endl;
-	// }
-	// if (node->getCodigoProvincia() == idProvincia){
-	// 	std::cout << split(node->getProvinciaCanton(), '-') << endl;
-	// 	std::cout << node->getCanton()->get_nombre() << endl;
-	// }
-	// printInOrderProvincia(node->getRight(), idProvincia);
-
-	for (int i = 1; i <= 7; ++i) {
-            NodeRB* current = root;
-            while (current != nullptr) {
-                if (current->getCodigoProvincia() == i) {
-                    // Perform the desired operation with the node containing the CodigoProvincia value within the range 1-7
-                    std::cout << split(current->getProvinciaCanton(), '-') << std::endl;
-					std::cout << current->getCanton()->get_nombre() << std::endl;
-                    break;
-                } else if (current->getCodigoProvincia() < i) {
-                    current = current->getRight();
-                } else {
-                    current = current->getLeft();
-                }
-            }
-        }
-}
 
 void Red_Black_tree::printProvinciaCantones(NodeRB* node,std::string provincia){
 	if (node == nullptr) {
@@ -465,18 +353,36 @@ int Red_Black_tree::totalHabitantes(NodeRB* node,std::string provincia){
     }
 }
 
+void Red_Black_tree::printProvinciaCantonInfo(NodeRB* node, int provinciaId){
+	if (node == nullptr)
+            return;
+	
+	printProvinciaCantonInfo(node->getRight(),provinciaId);
 
-
-void Red_Black_tree::printTree(){
-	if (isEmpty()) {
-		std::cout << "Tree is empty." << endl;
-		return;
+	if(node->getCodigoProvincia() == provinciaId){
+		std::cout << "Canton: " << node->getCanton()->get_nombre() << endl;
+		std::cout << "Distrito: " <<node->getCanton()->get_distrito() << endl;
+		std::cout << "Cantidad de habitantes: " <<node->getCanton()->get_habitantes() << endl;
+		std::cout << "Alcalde(sa): " <<node->getCanton()->get_alcalde() << endl;
+		std::cout << endl;
 	}
+	printProvinciaCantonInfo(node->getLeft(),provinciaId);
 
-	std::cout << "Provincias " << endl;
-	printInOrder(root);
-	std::cout << endl;
 }
+
+void Red_Black_tree::printProvinciaDescend(){
+	for (int codigoProvincia = 7; codigoProvincia >= 1; --codigoProvincia) {
+            printProvinciaCantonInfo(root, codigoProvincia);
+        }
+
+}
+void Red_Black_tree::printProvinciaAsced(){
+	for (int codigoProvincia = 1; codigoProvincia <= 7; ++codigoProvincia) {
+            printProvinciaCantonInfo(root, codigoProvincia);
+        }
+
+}
+
 
 void Red_Black_tree::printProvincia(std::string provincia){
 	if (isEmpty()) {
@@ -496,9 +402,7 @@ void Red_Black_tree::printInfoProvincia(std::string provincia){
 		std::cout << "El total de cantones: " << totalCantones(root, provincia)<< endl;
 		std::cout << "El total de habitantes: " << totalHabitantes(root, provincia)<< endl;
 		std::cout << endl;
-	}
-
-	
+	}	
 }
 
 NodeRB* Red_Black_tree::find(std::string provinciaCanton, NodeRB* tree_root){
