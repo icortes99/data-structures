@@ -20,13 +20,13 @@ Red_Black_tree* lprovincia_canton = new Red_Black_tree();
 BTree lpoblacion(7);
 
 
-string nombre_canton, nombre_distrito, nombre_alcalde;
+string nombre_canton, nombre_distrito, nombre_alcalde, nombre_provincia;
 int cantidad_habitantes, modificar_opcion, main_choice, provincia_opcion;
 bool exit_program = false;
 
 std::string getProvincia(int id_provincia) {
     std::unordered_map<int, std::string> mappings = {
-        {1, "SANJOSE"},
+        {1, "SAN JOSE"},
         {2, "ALAJUELA"},
         {3, "CARTAGO"},
         {4, "HEREDIA"},
@@ -64,9 +64,9 @@ void leerCantones() {
             Canton* canton = new Canton(nombre, stoi(provincia_id), distrito, alcalde, stoi(habitantes));
 
             nombre_provincia = getProvincia(stoi(provincia_id));
-            provinciaCanton = provincia_id + "-" + nombre;
-            //provinciaCanton = nombre_provincia + "-" + nombre;
-            NodeRB* aux = new NodeRB(provinciaCanton, canton);
+            //provinciaCanton = provincia_id + "-" + nombre;
+            provinciaCanton = nombre_provincia + "-" + nombre;
+            NodeRB* aux = new NodeRB(provinciaCanton, stoi(provincia_id), canton);
 
             lcantones->add(canton);
             lprovincia_canton->add(aux);
@@ -99,8 +99,12 @@ std::string toUpperCase(const std::string& str) {
     std::string result;
     std::locale loc;
 
-    for (char ch : str) {
-        result += std::toupper(ch, loc);
+     for (char ch : str) {
+        if (std::isalpha(ch, loc)) {  
+            result += std::toupper(ch, loc);
+        } else {
+            result += ch; 
+        }
     }
 
     return result;
@@ -126,22 +130,22 @@ std::string readStringInput(std::string prompt) {
 
 void modificarDistrito()
 {
-   nombre_canton = readStringInput("Ingrese el nombre del canton");
-   nombre_distrito = readStringInput("Ingrese el nuevo distrito");
+   nombre_canton = readStringInput("Ingrese el nombre del canton: ");
+   nombre_distrito = readStringInput("Ingrese el nuevo distrito: ");
    lcantones->editDistrito(nombre_canton,nombre_distrito);
 }
 
 void modificarAlcalde()
 {
-    nombre_canton = readStringInput("Ingrese el nombre del canton");
-    nombre_alcalde = readStringInput("Ingrese el nombre del nuevo alcalde(sa)");
+    nombre_canton = readStringInput("Ingrese el nombre del canton: ");
+    nombre_alcalde = readStringInput("Ingrese el nombre del nuevo alcalde(sa): ");
     lcantones->editAlcalde(nombre_canton,nombre_alcalde);
 }
 
 void modificarHabitantes()
 {
     nombre_canton = readStringInput("Ingrese el nombre del canton");
-    cantidad_habitantes = readIntegerInput("Ingrese la cantidad de habitantes que desea agregar ");
+    cantidad_habitantes = readIntegerInput("Ingrese la nueva cantidad de habitantes:  ");
     lcantones->editHabitantes(nombre_canton,cantidad_habitantes);
 }
 
@@ -238,6 +242,12 @@ void consultarCanton(){
     lcantones->displayCanton(nombre_canton);
 }
 
+//este es el 4
+void mostrarCantonesDeProvincia() {
+    nombre_provincia = readStringInput("Ingrese el nombre de la provincia: ");
+    lprovincia_canton->printProvincia(nombre_provincia);
+}
+
 void mostrarCantones(){
     cout << "\n----------------------------------" << endl;
     cout << "     Lista de Cantones" << endl;
@@ -272,51 +282,7 @@ void mostrarCantonerPorProvincia() {
     lprovincia_canton->printTree();
 }
 
-//este es el 4
-void mostrarCantonesDeProvincia() {
-    //preguntar por id provincia o nombre provincia
-    std::cout << "Si conoces el id de la provincia, digitalo, si no, oprime 0 para ecribir:" << endl;
-    int opc = readIntegerInput("Seleccione una opcion:  ");
 
-    if (opc == 0) {
-        //escribir provincia, transformar a int y preguntar
-        std::cout << "Digita el nombre de la provincia:" << endl;
-        std::string prov;
-        std::getline(std::cin, prov);
-
-        std::string comparar = toUpperCase(prov);
-        
-        if (comparar == "SAN JOSE") {
-            lprovincia_canton->printProvincia(1);
-        }
-        else if (comparar == "ALAJUELA") {
-            lprovincia_canton->printProvincia(2);
-        }
-        else if (comparar == "CARTAGO") {
-            lprovincia_canton->printProvincia(3);
-        }
-        else if (comparar == "HEREDIA") {
-            lprovincia_canton->printProvincia(4);
-        }
-        else if (comparar == "GUANACASTE") {
-            lprovincia_canton->printProvincia(5);
-        }
-        else if (comparar == "PUNTARENAS") {
-            lprovincia_canton->printProvincia(6);
-        }
-        else if (comparar == "LIMON") {
-            lprovincia_canton->printProvincia(7);
-        }
-        else {
-            std::cout << "Nombre invalido. " << endl;
-        }
-
-    } else if (opc > 7) {
-        std::cout << "Opcion invalida. " << endl;
-    } else {
-        lprovincia_canton->printProvincia(opc);
-    }
-}
 
 void menu() {
     while (!exit_program)
@@ -333,7 +299,6 @@ void menu() {
         cout << "(7) Mostrar cantones por poblacion  " << endl;
         cout << "(8) Mostrar provincia y cantones por poblacion   " << endl;
         cout << "(9) Mostrar provincia y cantones por referencia  " << endl;
-        cout << "(10) Mostrar cantones ordenados por provincia  " << endl;
         cout << "(0) Finalizar" << endl;
 
         main_choice = readIntegerInput("Seleccione una opcion ->  ");
@@ -361,6 +326,10 @@ void menu() {
             mostrarCantones();
             break;
         }
+        case 6: {
+            mostrarCantonerPorProvincia();
+            break;
+        }
         case 7: {
             mostarCantonPoblacion();
             break;
@@ -372,10 +341,6 @@ void menu() {
         }
         case 9: {
             mostrarProvinciasCantonesPoblacionRef();
-            break;
-        }
-        case 10: {
-            mostrarCantonerPorProvincia();
             break;
         }
         case 0: {

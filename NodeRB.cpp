@@ -3,15 +3,17 @@
 
 NodeRB::NodeRB(){
 	this->provinciaCanton = "";
+	this->codigoProvincia = 0;
 	this->color = false;
 	this->parent = NULL;
 	this->left = NULL;
 	this->right = NULL;
 }
 
-NodeRB::NodeRB(std::string newProvinciaCanton, Canton* cantonPtr){
+NodeRB::NodeRB(std::string newProvinciaCanton, int codigo, Canton* cantonPtr){
 	this->provinciaCanton = newProvinciaCanton;
 	this->canton = cantonPtr;
+	this->codigoProvincia = codigo;
 	this->color = false;
 	this->parent = NULL;
 	this->left = NULL;
@@ -22,8 +24,16 @@ NodeRB::~NodeRB(){
 	
 }
 
+Canton* NodeRB::getCanton(){
+	return this->canton;
+}
+
 std::string NodeRB::getProvinciaCanton(){
 	return this->provinciaCanton;
+}
+
+int NodeRB::getCodigoProvincia(){
+	return this->codigoProvincia;
 }
 
 NodeRB*& NodeRB::getLeft(){
@@ -42,8 +52,9 @@ bool NodeRB::getColor(){
 	return this->color;
 }
 
-void NodeRB::setProvinciaCanton(std::string newProvinciaCanton, Canton* cantonPtr){
+void NodeRB::setProvinciaCanton(std::string newProvinciaCanton,int codigo, Canton* cantonPtr){
 	this->provinciaCanton = newProvinciaCanton;
+	this->codigoProvincia = codigo;
 	this->canton = cantonPtr;
 }
 

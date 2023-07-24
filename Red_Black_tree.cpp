@@ -21,6 +21,15 @@ bool Red_Black_tree::isEmpty(){
 	return false;
 }
 
+std::string Red_Black_tree::split(const std::string& input, char delimiter){
+    size_t pos = input.find(delimiter);
+    if (pos != std::string::npos) {
+        return input.substr(0, pos);
+    }
+    return input;
+
+}
+
 void Red_Black_tree::add(NodeRB* newNode){
 	addNode(newNode, this->root);
 	organize();
@@ -312,84 +321,123 @@ void Red_Black_tree::printInOrder(NodeRB* node){
 	}
 
 	printInOrder(node->getLeft());
-	char idProvincia = node->getProvinciaCanton()[0];
-	string reemplazo = "";
-	string valor = node->getProvinciaCanton();
-	switch (idProvincia) {
-	case '1':
-		reemplazo = "SAN JOSE";
-		break;
-	case '2':
-		reemplazo = "ALAJUELA";
-		break;
-	case '3':
-		reemplazo = "CARTAGO";
-		break;
-	case '4':
-		reemplazo = "HEREDIA";
-		break;
-	case '5':
-		reemplazo = "GUANACASTE";
-		break;
-	case '6':
-		reemplazo = "PUNTARENAS";
-		break;
-	case '7':
-		reemplazo = "LIMON";
-		break;
-	default:
-		break;
-	}
-	valor.replace(0, 1, reemplazo);
-	std::cout << valor << endl;
+	// char idProvincia = node->getProvinciaCanton()[0];
+	// string reemplazo = "";
+	// string valor = node->getProvinciaCanton();
+	// switch (idProvincia) {
+	// case '1':
+	// 	reemplazo = "SAN JOSE";
+	// 	break;
+	// case '2':
+	// 	reemplazo = "ALAJUELA";
+	// 	break;
+	// case '3':
+	// 	reemplazo = "CARTAGO";
+	// 	break;
+	// case '4':
+	// 	reemplazo = "HEREDIA";
+	// 	break;
+	// case '5':
+	// 	reemplazo = "GUANACASTE";
+	// 	break;
+	// case '6':
+	// 	reemplazo = "PUNTARENAS";
+	// 	break;
+	// case '7':
+	// 	reemplazo = "LIMON";
+	// 	break;
+	// default:
+	// 	break;
+	// }
+	// valor.replace(0, 1, reemplazo);
+	// std::cout << valor << endl;
+	std::cout << "Canton: " << node->getProvinciaCanton() << endl;
+	std::cout << "Distrito: " <<node->getCanton()->get_distrito() << endl;
+	std::cout << "Cantidad de habitantes: " <<node->getCanton()->get_habitantes() << endl;
+	std::cout << endl;
+	//std::cout << node->getCodigoProvincia() << endl;
 	printInOrder(node->getRight());
 }
 
-void Red_Black_tree::printInOrderProvincia(NodeRB* node, int idProvincia){
+
+
+void Red_Black_tree::printInOrderProvincia(){
+	// if (node == nullptr) {
+	// 	return;
+	// }
+
+	// printInOrderProvincia(node->getLeft(), idProvincia);
+
+	// /******************* Validacion de provincias *************************/
+	// char idProvinci = node->getProvinciaCanton()[0];
+	// string reemplazo = "";
+	// string valor = node->getProvinciaCanton();
+	// switch (idProvinci) {
+	// case '1':
+	// 	reemplazo = "SAN JOSE";
+	// 	break;
+	// case '2':
+	// 	reemplazo = "ALAJUELA";
+	// 	break;
+	// case '3':
+	// 	reemplazo = "CARTAGO";
+	// 	break;
+	// case '4':
+	// 	reemplazo = "HEREDIA";
+	// 	break;
+	// case '5':
+	// 	reemplazo = "GUANACASTE";
+	// 	break;
+	// case '6':
+	// 	reemplazo = "PUNTARENAS";
+	// 	break;
+	// case '7':
+	// 	reemplazo = "LIMON";
+	// 	break;
+	// default:
+	// 	break;
+	// }
+	// valor.replace(0, 1, reemplazo);
+	// /******************* Validacion de provincias *************************/
+
+	// int validacion = idProvinci - '0';
+
+	// if (validacion == idProvincia) {
+	// 	std::cout << valor << endl;
+	// }
+	// if (node->getCodigoProvincia() == idProvincia){
+	// 	std::cout << split(node->getProvinciaCanton(), '-') << endl;
+	// 	std::cout << node->getCanton()->get_nombre() << endl;
+	// }
+	// printInOrderProvincia(node->getRight(), idProvincia);
+
+	for (int i = 1; i <= 7; ++i) {
+            NodeRB* current = root;
+            while (current != nullptr) {
+                if (current->getCodigoProvincia() == i) {
+                    // Perform the desired operation with the node containing the CodigoProvincia value within the range 1-7
+                    std::cout << split(current->getProvinciaCanton(), '-') << std::endl;
+					std::cout << current->getCanton()->get_nombre() << std::endl;
+                    break;
+                } else if (current->getCodigoProvincia() < i) {
+                    current = current->getRight();
+                } else {
+                    current = current->getLeft();
+                }
+            }
+        }
+}
+
+void Red_Black_tree::printProvinciaCantones(NodeRB* node,std::string provincia){
 	if (node == nullptr) {
 		return;
 	}
-
-	printInOrderProvincia(node->getLeft(), idProvincia);
-
-	/******************* Validacion de provincias *************************/
-	char idProvinci = node->getProvinciaCanton()[0];
-	string reemplazo = "";
-	string valor = node->getProvinciaCanton();
-	switch (idProvinci) {
-	case '1':
-		reemplazo = "SAN JOSE";
-		break;
-	case '2':
-		reemplazo = "ALAJUELA";
-		break;
-	case '3':
-		reemplazo = "CARTAGO";
-		break;
-	case '4':
-		reemplazo = "HEREDIA";
-		break;
-	case '5':
-		reemplazo = "GUANACASTE";
-		break;
-	case '6':
-		reemplazo = "PUNTARENAS";
-		break;
-	case '7':
-		reemplazo = "LIMON";
-		break;
-	default:
-		break;
+	printProvinciaCantones(node->getLeft(), provincia);
+	if(split(node->getProvinciaCanton(), '-') == provincia){
+		std::cout << node->getCanton()->get_nombre() << endl;
 	}
-	valor.replace(0, 1, reemplazo);
-	/******************* Validacion de provincias *************************/
+	printProvinciaCantones(node->getRight(), provincia);
 
-	int validacion = idProvinci - '0';
-
-	if (validacion == idProvincia) {
-		std::cout << valor << endl;
-	}
-	printInOrderProvincia(node->getRight(), idProvincia);
 }
 
 void Red_Black_tree::printTree(){
@@ -398,18 +446,18 @@ void Red_Black_tree::printTree(){
 		return;
 	}
 
-	std::cout << "Tree elements in ascending order: ";
+	std::cout << "Provincias " << endl;
 	printInOrder(root);
 	std::cout << endl;
 }
 
-void Red_Black_tree::printProvincia(int idProvincia){
+void Red_Black_tree::printProvincia(std::string provincia){
 	if (isEmpty()) {
 		std::cout << "Tree is empty." << endl;
 		return;
 	}
 
-	printInOrderProvincia(getRoot(), idProvincia);
+	printProvinciaCantones(getRoot(), provincia);
 }
 
 NodeRB* Red_Black_tree::find(std::string provinciaCanton, NodeRB* tree_root){

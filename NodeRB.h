@@ -7,6 +7,7 @@ class NodeRB {
 private:
 	Canton* canton;
 	std::string provinciaCanton;
+	int codigoProvincia;
 	bool color; //color is either black = false, or red = true
 	NodeRB* parent;
 	NodeRB* left;
@@ -14,15 +15,17 @@ private:
 
 public:
 	NodeRB();
-	NodeRB(std::string,Canton*);
+	NodeRB(std::string,int,Canton*);
 	~NodeRB();
 	std::string getProvinciaCanton();
+	int getCodigoProvincia();
 	NodeRB*& getLeft();
 	NodeRB*& getRight();
 	NodeRB*& getParent();
+	Canton* getCanton();
 	bool getColor(); // black = false, or red = true
 	
-	void setProvinciaCanton(std::string,Canton*);
+	void setProvinciaCanton(std::string,int,Canton*);
 	void setLeft(NodeRB *);
 	void setRight(NodeRB *);
 	void setColor(bool);

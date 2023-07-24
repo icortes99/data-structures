@@ -14,7 +14,10 @@ private:
 	void deleteAdjustment(NodeRB*, NodeRB*, bool);
 	NodeRB* findSuccessor(NodeRB*);
 	void printInOrder(NodeRB*);
-	void printInOrderProvincia(NodeRB*, int);
+	void printInOrderProvinciaId(NodeRB*);
+	void printInOrderProvincia();
+	void printProvinciaCantones(NodeRB*,std::string);
+	std::string split(const std::string&, char);
 
 public:
 	Red_Black_tree();
@@ -24,6 +27,6 @@ public:
 	bool isEmpty();
 	void add(NodeRB*);
 	void printTree();
-	void printProvincia(int);
+	void printProvincia(std::string);
 	NodeRB* find(std::string,NodeRB*);
 };
