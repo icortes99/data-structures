@@ -50,46 +50,6 @@ void BTreeNode::traverseCantProvPoblacion(int codigoProvincia) {
             children[i]->traverseCantProvPoblacion(codigoProvincia);
 }
 
-string BTreeNode::getProvinciaByID(int id) {
-    string prov = "";
-    switch (id)
-    {
-    case 1: 
-        prov = "San Jose";
-        break;
-
-    case 2:
-        prov = "Alajuela";
-        break;
-
-    case 3:
-        prov = "Cartago";
-        break;
-
-    case 4:
-        prov = "Heredia";
-        break;
-
-    case 5:
-        prov = "Guanacaste";
-        break;
-
-    case 6:
-        prov = "Puntarenas";
-        break;
-
-    case 7:
-        prov = "Limon";
-        break;
-
-    default:
-        break;
-    }
-
-    return prov;
-}
-
-
 void BTreeNode::traverseCantProvPoblacionRefe(int codigoProvincia, int poblacionReferencia) {
     int i;
     for (i = keys.size() - 1; i >= 0; i--) {
