@@ -25,7 +25,6 @@ public:
      void printHelper(string provincia);
 
      //Nuevos para Cantones
-     void displayProvinciasCantonesPoblacion();
      void displayProvCantxPoblaRef(int pobReferencia);
 
      void ordenarCantPobxProvin(BTreeNode* nodoCanton, BTree* arbol, int idProvincia);

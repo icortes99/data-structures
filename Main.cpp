@@ -234,18 +234,18 @@ void mostarCantonPoblacion(){
 
 //este es el 8
 void mostrarProvinciasCantonesPoblacion() {
-    cout << "\n----------------------------------" << endl;
-    cout << "     Mostrar provincia y cantones por poblacion" << endl;
-    cout << "----------------------------------" << endl;
+    cout << "\n------------------------------------------------" << endl;
+    cout << "   Mostrar provincia y cantones por poblacion" << endl;
+    cout << "------------------------------------------------" << endl;
     lpoblacion.traverseCantProvPoblacion();
 }
 
 //este es el 9
 void mostrarProvinciasCantonesPoblacionRef() {
     int pobReferencia = 0;
-    cout << "\n----------------------------------" << endl;
-    cout << "     Mostrar provincia y cantones por poblacion de referencia" << endl;
-    cout << "----------------------------------" << endl;
+    cout << "\n----------------------------------------------------------" << endl;
+    cout << "  Mostrar provincia y cantones por poblacion de referencia" << endl;
+    cout << "----------------------------------------------------------" << endl;
     cout << "Digite poblacion de referencia\n> " << endl;
     cin >> pobReferencia;
     lpoblacion.traverseCantProvPoblacionRefe(pobReferencia);
@@ -273,7 +273,7 @@ void menu() {
         cout << "(0) Finalizar" << endl;
 
         main_choice = readIntegerInput("Seleccione una opcion ->  ");
-        cout << "===================================" << endl;
+        cout << "\n===================================" << endl;
 
 
         switch (main_choice) {

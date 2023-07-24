@@ -92,58 +92,12 @@ void BTree::printHelper(string provincia)
 {
     cout << "\n----------------------------------" << endl;
     cout << "       " << provincia << endl;
-    cout << "----------------------------------" << endl;
+    cout << "------------------------------------" << endl;
 }
 
-void BTree::displayProvinciasCantonesPoblacion()
-{
-    BTree* arbol_SJ = new BTree();
-    BTree* arbol_AL = new BTree();
-    BTree* arbol_HE = new BTree();
-    BTree* arbol_CA = new BTree();
-    BTree* arbol_PU = new BTree();
-    BTree* arbol_GU = new BTree();
-    BTree* arbol_LI = new BTree();
-
-    //ordenarCantPobxProvin(root, arbol_SJ, 1);
-    printHelper("San Jose");
-    arbol_SJ->traverse();
-    cout << endl;
-
-   // ordenarCantPobxProvin(root, arbol_AL, 2);
-    printHelper("Alajuela");
-    arbol_AL->traverse();
-    cout << endl;
-
-    //ordenarCantPobxProvin(root, arbol_CA, 3);
-    printHelper("Cartago");
-    arbol_CA->traverse();
-    cout << endl;
-
-    //ordenarCantPobxProvin(root, arbol_HE, 4);
-    printHelper("Heredia");
-    arbol_HE->traverse();
-    cout << endl;
-
-    //ordenarCantPobxProvin(root, arbol_GU, 5);
-    printHelper("Guanacaste");
-    arbol_GU->traverse();
-    cout << endl;
-
-   // ordenarCantPobxProvin(root, arbol_PU, 6);
-    printHelper("Puntarenas");
-    arbol_PU->traverse();
-    cout << endl;
-
-    //ordenarCantPobxProvin(root, arbol_LI, 7);
-    printHelper("Limon");
-    arbol_LI->traverse();
-    cout << endl;
-}
 
 void BTree::ordenarCantPobxProvin(BTreeNode* nodoCanton, BTree* arbol, int idProvincia)
 {
-    //Canton* canton = new Canton();
 
     if (nodoCanton == NULL)
         return;
