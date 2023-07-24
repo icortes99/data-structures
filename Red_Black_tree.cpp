@@ -439,11 +439,33 @@ void Red_Black_tree::printProvinciaCantones(NodeRB* node,std::string provincia){
 		std::cout << "Cantidad de habitantes: " <<node->getCanton()->get_habitantes() << endl;
 		std::cout << "Alcalde(sa): " <<node->getCanton()->get_alcalde() << endl;
 		std::cout << endl;
-
 	}
 	printProvinciaCantones(node->getRight(), provincia);
 
 }
+int Red_Black_tree::totalCantones(NodeRB* node,std::string provincia){
+	
+	if (node == nullptr) {
+		return 0;
+	} else if (split(node->getProvinciaCanton(), '-') == provincia) {
+        return 1 + totalCantones(node->getLeft(), provincia) + totalCantones(node->getRight(), provincia);
+    } else {
+        return totalCantones(node->getLeft(), provincia) + totalCantones(node->getRight(), provincia);
+    }
+}
+
+int Red_Black_tree::totalHabitantes(NodeRB* node,std::string provincia){
+	
+	if (node == nullptr) {
+		return 0;
+	} else if (split(node->getProvinciaCanton(), '-') == provincia) {
+        return node->getCanton()->get_habitantes() + totalHabitantes(node->getLeft(), provincia)+ totalHabitantes(node->getRight(), provincia);
+    } else {
+        return totalHabitantes(node->getLeft(), provincia) + totalHabitantes(node->getRight(), provincia);
+    }
+}
+
+
 
 void Red_Black_tree::printTree(){
 	if (isEmpty()) {
@@ -458,11 +480,25 @@ void Red_Black_tree::printTree(){
 
 void Red_Black_tree::printProvincia(std::string provincia){
 	if (isEmpty()) {
-		std::cout << "Tree is empty." << endl;
+		std::cout << "El arbol esta vacio" << endl;
 		return;
 	}
 
 	printProvinciaCantones(getRoot(), provincia);
+}
+
+void Red_Black_tree::printInfoProvincia(std::string provincia){
+
+	if (isEmpty()) {
+		std::cout << "El arbol esta vacio" << endl;
+		return;
+	}else{
+		std::cout << "El total de cantones: " << totalCantones(root, provincia)<< endl;
+		std::cout << "El total de habitantes: " << totalHabitantes(root, provincia)<< endl;
+		std::cout << endl;
+	}
+
+	
 }
 
 NodeRB* Red_Black_tree::find(std::string provinciaCanton, NodeRB* tree_root){

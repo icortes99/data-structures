@@ -17,6 +17,8 @@ private:
 	void printInOrderProvinciaId(NodeRB*);
 	void printInOrderProvincia();
 	void printProvinciaCantones(NodeRB*,std::string);
+	int totalCantones(NodeRB*,std::string);
+	int totalHabitantes(NodeRB*,std::string);
 	std::string split(const std::string&, char);
 
 public:
@@ -28,5 +30,6 @@ public:
 	void add(NodeRB*);
 	void printTree();
 	void printProvincia(std::string);
+	void printInfoProvincia(std::string);
 	NodeRB* find(std::string,NodeRB*);
 };
