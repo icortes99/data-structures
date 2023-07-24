@@ -245,6 +245,7 @@ void consultarCanton(){
 //este es el 4
 void mostrarCantonesDeProvincia() {
     nombre_provincia = readStringInput("Ingrese el nombre de la provincia: ");
+    std::cout << endl;
     lprovincia_canton->printProvincia(nombre_provincia);
 }
 
