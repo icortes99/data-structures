@@ -434,7 +434,12 @@ void Red_Black_tree::printProvinciaCantones(NodeRB* node,std::string provincia){
 	}
 	printProvinciaCantones(node->getLeft(), provincia);
 	if(split(node->getProvinciaCanton(), '-') == provincia){
-		std::cout << node->getCanton()->get_nombre() << endl;
+		std::cout << "Canton: " << node->getCanton()->get_nombre() << endl;
+		std::cout << "Distrito: " <<node->getCanton()->get_distrito() << endl;
+		std::cout << "Cantidad de habitantes: " <<node->getCanton()->get_habitantes() << endl;
+		std::cout << "Alcalde(sa): " <<node->getCanton()->get_alcalde() << endl;
+		std::cout << endl;
+
 	}
 	printProvinciaCantones(node->getRight(), provincia);
 
