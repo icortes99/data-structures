@@ -142,16 +142,19 @@
     <ClInclude Include="BTreeNode.h" />
     <ClInclude Include="Canton.h" />
     <ClInclude Include="CantonTxt.h" />
-    <ClInclude Include="HashTable.h" />
-    <ClInclude Include="LeerTxt.h" />
     <ClInclude Include="NodeRB.h" />
     <ClInclude Include="NodeTAVL.h" />
     <ClInclude Include="NodoTH.h" />
     <ClInclude Include="Red_Black_tree.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Tree_AVL.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\Grafo-data.txt" />
     <Text Include="Cantones.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Avance1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

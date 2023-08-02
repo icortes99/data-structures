@@ -50,16 +50,10 @@
     <ClInclude Include="Red_Black_tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LeerTxt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CantonTxt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Canton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HashTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NodeTAVL.h">
@@ -77,10 +71,21 @@
     <ClInclude Include="BTreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cantones.txt">
       <Filter>External Files</Filter>
     </Text>
+    <Text Include="..\Grafo-data.txt">
+      <Filter>External Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Avance1.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
