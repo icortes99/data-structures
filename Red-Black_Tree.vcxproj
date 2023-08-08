@@ -131,6 +131,7 @@
     <ClCompile Include="BTree.cpp" />
     <ClCompile Include="BTreeNode.cpp" />
     <ClCompile Include="Canton.cpp" />
+    <ClCompile Include="Grafo.cpp" />
     <ClCompile Include="NodeRB.cpp" />
     <ClCompile Include="NodeTAVL.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="BTreeNode.h" />
     <ClInclude Include="Canton.h" />
     <ClInclude Include="CantonTxt.h" />
+    <ClInclude Include="Grafo.h" />
     <ClInclude Include="NodeRB.h" />
     <ClInclude Include="NodeTAVL.h" />
     <ClInclude Include="NodoTH.h" />

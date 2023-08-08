@@ -13,5 +13,7 @@ public:
 	void agregarArista();
 	void agregarVertice();
 	int obtenerDistancia(string, string);
+	int getIdCanton(string);
+	string getCanton(int);
 	vector<string> obtenerConexiones(); //retorna una lista de todas las conexiones
 };

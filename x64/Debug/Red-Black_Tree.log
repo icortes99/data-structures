@@ -1,12 +1,3 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Red-Black_Tree.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  BTree.cpp
-  BTreeNode.cpp
-C:\Users\corte\OneDrive\Escritorio\U\7mo\Estructuras2\Proyecto final\avance1\BTreeNode.cpp(55,26): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Canton.cpp
-  NodeRB.cpp
-  NodeTAVL.cpp
-  Main.cpp
-  Red_Black_tree.cpp
-  Tree_AVL.cpp
-  Generating Code...
+  Grafo.cpp
   Red-Black_Tree.vcxproj -> C:\Users\corte\OneDrive\Escritorio\U\7mo\Estructuras2\Proyecto final\avance1\x64\Debug\Avance1.exe
