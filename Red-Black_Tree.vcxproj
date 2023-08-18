@@ -152,8 +152,8 @@
     <ClInclude Include="Tree_AVL.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Grafo-data.txt" />
     <Text Include="Cantones.txt" />
+    <Text Include="Grafo-lista-ady.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Avance1.rc" />

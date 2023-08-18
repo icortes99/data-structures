@@ -11,6 +11,7 @@
 #include "Tree_AVL.h"
 #include "BTree.h"
 #include "Canton.h"
+#include "Grafo.h"
 void menu();
 
 
@@ -18,6 +19,7 @@ using namespace std;
 Tree_AVL* lcantones = new Tree_AVL();
 Red_Black_tree* lprovincia_canton = new Red_Black_tree();
 BTree lpoblacion(7);
+Grafo grafos;
 
 
 string nombre_canton, nombre_distrito, nombre_alcalde, nombre_provincia;
@@ -251,9 +253,15 @@ void mostrarProvinciasCantonesPoblacionRef() {
     lpoblacion.traverseCantProvPoblacionRefe(pobReferencia);
 }
 
+//10
+void mostrarRutaMasCorta() {
+    string provincia;
 
+    cout << "Digite la provincia: ";
+    cin >> provincia;
 
-
+    grafos.rutaMasCorta(provincia);
+}
 
 void menu() {
     while (!exit_program)
@@ -270,6 +278,7 @@ void menu() {
         cout << "(7) Mostrar cantones por poblacion  " << endl;
         cout << "(8) Mostrar provincia y cantones por poblacion   " << endl;
         cout << "(9) Mostrar provincia y cantones por referencia  " << endl;
+        cout << "(10) Imprimir grafo  " << endl;
         cout << "(0) Finalizar" << endl;
 
         main_choice = readIntegerInput("Seleccione una opcion ->  ");
@@ -312,6 +321,10 @@ void menu() {
         }
         case 9: {
             mostrarProvinciasCantonesPoblacionRef();
+            break;
+        }
+        case 10: {
+            mostrarRutaMasCorta();
             break;
         }
         case 0: {

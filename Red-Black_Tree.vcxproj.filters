@@ -85,7 +85,7 @@
     <Text Include="Cantones.txt">
       <Filter>External Files</Filter>
     </Text>
-    <Text Include="..\Grafo-data.txt">
+    <Text Include="Grafo-lista-ady.txt">
       <Filter>External Files</Filter>
     </Text>
   </ItemGroup>
