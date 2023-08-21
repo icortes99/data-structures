@@ -420,3 +420,30 @@ NodeRB* Red_Black_tree::find(std::string provinciaCanton, NodeRB* tree_root){
 		return find(provinciaCanton, tree_root->getRight());
 	}
 }
+
+std::vector<std::string> Red_Black_tree::cantonesProvincia(string provincia) {
+	std::vector<std::string> toReturn;
+
+	if (isEmpty()) {
+		return std::vector<std::string>();
+	}
+
+	cantonProvinciaRecursive(getRoot(), provincia, toReturn);
+
+	return toReturn;
+}
+
+void Red_Black_tree::cantonProvinciaRecursive(NodeRB* node, std::string provincia, std::vector<std::string>& result){
+	std::string toReturn;
+
+	if (node == nullptr) {
+		return;
+	}
+	cantonProvinciaRecursive(node->getLeft(), provincia, result);
+
+	if (split(node->getProvinciaCanton(), '-') == provincia) {
+		result.push_back(node->getCanton()->get_nombre());
+	}
+
+	cantonProvinciaRecursive(node->getRight(), provincia, result);
+}

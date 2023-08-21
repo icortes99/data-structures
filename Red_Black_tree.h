@@ -1,5 +1,6 @@
 #pragma once
 #include "NodeRB.h"
+#include <vector>
 
 class Red_Black_tree {
 private:
@@ -33,4 +34,6 @@ public:
 	void printProvinciaDescend();
 	void printProvinciaAsced();
 	NodeRB* find(std::string,NodeRB*);
+	std::vector<std::string> cantonesProvincia(std::string provincia);
+	void cantonProvinciaRecursive(NodeRB* node, std::string provincia, std::vector<std::string>& result);
 };

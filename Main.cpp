@@ -19,7 +19,7 @@ using namespace std;
 Tree_AVL* lcantones = new Tree_AVL();
 Red_Black_tree* lprovincia_canton = new Red_Black_tree();
 BTree lpoblacion(7);
-Grafo grafos;
+Grafo grafo;
 
 
 string nombre_canton, nombre_distrito, nombre_alcalde, nombre_provincia;
@@ -254,13 +254,39 @@ void mostrarProvinciasCantonesPoblacionRef() {
 }
 
 //10
+void imprimirGrafo() {
+    nombre_provincia = readStringInput("Ingrese el nombre de la provincia: ");
+    vector<string> v = lprovincia_canton->cantonesProvincia(nombre_provincia);
+    for (const std::string& str : v) {
+        std::cout << str << endl;
+    }
+
+    grafo.inicializarGrafos(v, nombre_provincia);
+    int cant = size(v);
+    grafo.imprimirGrafo(nombre_provincia, cant);
+}
+
+//11
 void mostrarRutaMasCorta() {
-    string provincia;
+    std::string inicio, destino;
 
-    cout << "Digite la provincia: ";
-    cin >> provincia;
+    inicio = readStringInput("Digite canton de inicio: ");
+    std::cout << endl;
 
-    grafos.rutaMasCorta(provincia);
+    destino = readStringInput("Digite canton de destino: ");
+    std::cout << endl;
+
+    //grafo.encontrarRutaCorta(inicio, destino);
+}
+
+//12
+void redFibraOptica() {
+    nombre_provincia = readStringInput("Ingrese el nombre de la provincia: ");
+    vector<string> v = lprovincia_canton->cantonesProvincia(nombre_provincia);
+    grafo.inicializarGrafos(v, nombre_provincia);
+    int cant = size(v);
+
+    grafo.redFibraOptica(nombre_provincia, v);
 }
 
 void menu() {
@@ -279,6 +305,8 @@ void menu() {
         cout << "(8) Mostrar provincia y cantones por poblacion   " << endl;
         cout << "(9) Mostrar provincia y cantones por referencia  " << endl;
         cout << "(10) Imprimir grafo  " << endl;
+        cout << "(11) Mostrar ruta mas corta " << endl;
+        cout << "(12) Calcular ruta de fibra optica para provincia " << endl;
         cout << "(0) Finalizar" << endl;
 
         main_choice = readIntegerInput("Seleccione una opcion ->  ");
@@ -314,7 +342,6 @@ void menu() {
             mostarCantonPoblacion();
             break;
         }
-
         case 8: {
             mostrarProvinciasCantonesPoblacion();
             break;
@@ -324,7 +351,15 @@ void menu() {
             break;
         }
         case 10: {
+            imprimirGrafo();
+            break;
+        }
+        case 11: {
             mostrarRutaMasCorta();
+            break;
+        }
+        case 12: {
+            redFibraOptica();
             break;
         }
         case 0: {
@@ -337,12 +372,9 @@ void menu() {
             cout << "\n\n";
             system("pause");
             system("cls");
-
         }
-
         }
     }
-
 }
 
 
