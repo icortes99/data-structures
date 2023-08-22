@@ -116,12 +116,6 @@ void Grafo::redFibraOptica(string provincia, vector<string>& cantones) {
 	noAgregados.erase(std::remove(noAgregados.begin(), noAgregados.end(), startX), noAgregados.end());
 	noAgregados.erase(std::remove(noAgregados.begin(), noAgregados.end(), startY), noAgregados.end());
 
-	//variable para comparar pesos mas adelante
-	vector<int> posiblesPesos = {};
-	posiblesPesos.clear();
-
-	//************************************************************************************************************************
-
 	//con informacion inicializada, repetimos el proceso de comparacion hasta acabar los vertices
 	while (size(noAgregados) > 0){
 	
@@ -131,32 +125,19 @@ void Grafo::redFibraOptica(string provincia, vector<string>& cantones) {
 
 		//analizamos las posibilidades de cada nodo ya agregado
 		for (int i = 0; i < size(agregados); i++) {
-			cout << "agregados: " << cantones[i] << endl;
 
 			//los comparamos contra los que aun no estan agregados, ya que no tiene sentido reevaluar los ya agregados
-			/*for (int j = 0; j < size(noAgregados); j++) {
-				if (arr[i][j] < menor < menor && arr[i][j] > 0) {
-					menor = arr[i][j];
+			for (int j = 0; j < size(noAgregados); j++) {
+				if (arr[agregados[i]][noAgregados[j]] < menor && arr[agregados[i]][noAgregados[j]] > 0) {
+					menor = arr[agregados[i]][noAgregados[j]];
 				}
-			}*/			
-		}
-		menor = 500;
-
-		/*posiblesPesos.push_back(menor);
-		cout << "posible peso: " << menor << endl;
-
-		//de las posibles opciones, escogemas la menor
-		int menorOpcion = 999;
-		for (const int x : posiblesPesos) {
-			if (menorOpcion > x){
-				menorOpcion = x;
-			}
+			}		
 		}
 
-		//buscamos el x, y del peso escogido para guardarlo
+		//buscamos el (x, y) del peso escogido para guardarlo
 		for (int i = 0; i < size(cantones); i++) {
 			for (int j = 0; j < size(cantones); j++) {
-				if (arr[i][j] == menorOpcion) {
+				if (arr[i][j] == menor) {
 					//guardamos las coordenadas
 					startX = i;
 					startY = j;
@@ -164,24 +145,27 @@ void Grafo::redFibraOptica(string provincia, vector<string>& cantones) {
 			}
 		}
 
+		cout << "x: " << startX << cantones[startX] << endl;
+		cout << "y: " << startY << cantones[startY] << endl;
+
 		//debemos validar cual de las 2 coordenadas no esta guardada (una de esas ya debe estar guardada)
 		bool xAgregado = false;
-		for (const int x : agregados) {
-			if (startX == x) {
+		for (const int& w : agregados) {
+			if (startX == w) {
 				xAgregado = true;
 			}
 		}
 
-		if (xAgregado) {
-			//agregados.push_back(startY);
+		if (xAgregado == true) {
+			agregados.push_back(startY);
 			noAgregados.erase(std::remove(noAgregados.begin(), noAgregados.end(), startY), noAgregados.end());
 		} else {
-			//agregados.push_back(startX);
+			agregados.push_back(startX);
 			noAgregados.erase(std::remove(noAgregados.begin(), noAgregados.end(), startX), noAgregados.end());
 		}
 		
 		concatPesos = cantones[startX] + " - " + cantones[startY] + ", " + std::to_string(menor);
-		pesos.push_back(concatPesos);	*/	
+		pesos.push_back(concatPesos);
 	}
 
 	//print de las conexiones dijkstra
